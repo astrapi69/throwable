@@ -26,8 +26,6 @@ package de.alpharogroup.throwable;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-import java.io.IOException;
-
 import org.meanbean.factories.ObjectCreationException;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
