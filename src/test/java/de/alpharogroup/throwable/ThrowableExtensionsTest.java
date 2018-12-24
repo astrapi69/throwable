@@ -94,6 +94,19 @@ public class ThrowableExtensionsTest
 
 		expected = "class org.meanbean.test.BeanTestException";
 		assertTrue(actual.startsWith(expected));
+
+		try
+		{
+			final BeanTester beanTester = new BeanTester();
+			beanTester.testBean(ThrowableExtensions.class);
+		}
+		catch (final Exception e)
+		{
+			actual = ThrowableExtensions.getStackTraceElements(e, "foo", "bar");
+		}
+
+		expected = "foo, bar";
+		assertTrue(actual.startsWith(expected));
 	}
 
 	/**
