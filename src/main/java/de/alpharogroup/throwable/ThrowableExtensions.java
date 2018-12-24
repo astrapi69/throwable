@@ -27,6 +27,8 @@ package de.alpharogroup.throwable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
@@ -70,11 +72,18 @@ public final class ThrowableExtensions
 	 *
 	 * @param throwable
 	 *            the throwable
+	 * @param strings
+	 *            the additional information to the given throwable
 	 * @return the stack trace elements
 	 */
-	public static String getStackTraceElements(@NonNull Throwable throwable)
+	public static String getStackTraceElements(@NonNull Throwable throwable, String... strings)
 	{
 		StringBuilder stacktrace = new StringBuilder();
+		if (strings != null && 0 < strings.length)
+		{
+			stacktrace.append(
+				Arrays.stream(strings).map(Object::toString).collect(Collectors.joining(", ")));
+		}
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			pw.println(throwable.getClass().toString());
@@ -101,6 +110,5 @@ public final class ThrowableExtensions
 		}
 		return stacktrace.toString();
 	}
-
 
 }
