@@ -71,13 +71,11 @@ public final class ThrowableExtensions
 	 * @param throwable
 	 *            the throwable
 	 * @return the stack trace elements
-	 * @throws IOException
-	 *             Signals that an I/O throwable has occurred.
 	 */
 	public static String getStackTraceElements(@NonNull Throwable throwable)
 	{
 		StringBuilder stacktrace = new StringBuilder();
-		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw);)
+		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			pw.println(throwable.getClass().toString());
 			while (throwable != null)

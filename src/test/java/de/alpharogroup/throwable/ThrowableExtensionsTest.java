@@ -41,9 +41,6 @@ public class ThrowableExtensionsTest
 
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable)}
-	 *
-	 * @throws IOException
-	 *             Signals that an I/O throwable has occurred.
 	 */
 	@SuppressWarnings("null")
 	@Test
