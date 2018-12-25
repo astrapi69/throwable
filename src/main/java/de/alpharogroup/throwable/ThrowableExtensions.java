@@ -29,8 +29,10 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import lombok.NonNull;
+import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -51,17 +53,13 @@ public final class ThrowableExtensions
 	 *            the {@link Throwable} object
 	 * @return the stacktrace as a {@link String} object
 	 */
-	public static String getStackTrace(final @NonNull Throwable throwable)
+	@SneakyThrows public static String getStackTrace(final @NonNull Throwable throwable, String... additionalInfo)
 	{
-		StringBuilder stacktrace = new StringBuilder();
+		StringBuilder stacktrace = getAdditionalInfo(additionalInfo, Arrays.stream(additionalInfo));
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			throwable.printStackTrace(pw);
 			stacktrace.append(sw.toString());
-		}
-		catch (IOException e)
-		{
-			throw new RuntimeException(e);
 		}
 		return stacktrace.toString();
 	}
@@ -72,18 +70,13 @@ public final class ThrowableExtensions
 	 *
 	 * @param throwable
 	 *            the throwable
-	 * @param strings
+	 * @param additionalInfo
 	 *            the additional information to the given throwable
 	 * @return the stack trace elements
 	 */
-	public static String getStackTraceElements(@NonNull Throwable throwable, String... strings)
+	@SneakyThrows public static String getStackTraceElements(@NonNull Throwable throwable, String... additionalInfo)
 	{
-		StringBuilder stacktrace = new StringBuilder();
-		if (strings != null && 0 < strings.length)
-		{
-			stacktrace.append(
-				Arrays.stream(strings).map(Object::toString).collect(Collectors.joining(", ")));
-		}
+		StringBuilder stacktrace = getAdditionalInfo(additionalInfo, Arrays.stream(additionalInfo));
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			pw.println(throwable.getClass().toString());
@@ -104,11 +97,18 @@ public final class ThrowableExtensions
 			}
 			stacktrace.append(sw.toString());
 		}
-		catch (IOException e)
-		{
-			throw new RuntimeException(e);
-		}
 		return stacktrace.toString();
+	}
+
+	private static StringBuilder getAdditionalInfo(String[] additionalInfo, Stream<String> stream)
+	{
+		StringBuilder stacktrace = new StringBuilder();
+		if (additionalInfo != null && 0 < additionalInfo.length)
+		{
+			stacktrace.append(stream.map(Object::toString).collect(Collectors.joining(", ")));
+			stacktrace.append(" ");
+		}
+		return stacktrace;
 	}
 
 }
