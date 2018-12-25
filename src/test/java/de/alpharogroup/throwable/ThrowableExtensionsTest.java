@@ -38,7 +38,7 @@ public class ThrowableExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable)}
+	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
 	 */
 	@SuppressWarnings("null")
 	@Test
@@ -58,10 +58,36 @@ public class ThrowableExtensionsTest
 		}
 		expected = "java.lang.NullPointerException";
 		assertTrue(actual.startsWith(expected));
+
+		try
+		{
+			final BeanTester beanTester = new BeanTester();
+			beanTester.testBean(ThrowableExtensions.class);
+		}
+		catch (final Exception e)
+		{
+			actual = ThrowableExtensions.getStackTrace(e);
+		}
+
+		expected = "org.meanbean.test.BeanTestException";
+		assertTrue(actual.startsWith(expected));
+
+		try
+		{
+			final BeanTester beanTester = new BeanTester();
+			beanTester.testBean(ThrowableExtensions.class);
+		}
+		catch (final Exception e)
+		{
+			actual = ThrowableExtensions.getStackTrace(e, "foo", "bar");
+		}
+
+		expected = "foo, bar org.meanbean.test.BeanTestException";
+		assertTrue(actual.startsWith(expected));
 	}
 
 	/**
-	 * Test method for {@link ThrowableExtensions#getStackTraceElements(Throwable)}
+	 * Test method for {@link ThrowableExtensions#getStackTraceElements(Throwable, String...)}
 	 */
 	@SuppressWarnings("null")
 	@Test
