@@ -1,5 +1,4 @@
 # throw-able .travis.yml
-
 language: java
 
 jdk:
