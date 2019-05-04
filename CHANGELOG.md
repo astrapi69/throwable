@@ -4,7 +4,9 @@
 Version 1.1-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of parent version to 4.8
 
 Version 1
 -------------
