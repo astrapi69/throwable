@@ -7,6 +7,7 @@
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/throw-able.svg?style=flat)](https://github.com/astrapi69/throw-able/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)](http://www.javadoc.io/doc/de.alpharogroup/throw-able)
+[![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
 </div>
 
