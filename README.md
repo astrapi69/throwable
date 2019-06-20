@@ -13,6 +13,8 @@
 
 Project that holds utilities for get the stacktrace as string from java throwable objects
 
+If you like this project put a ⭐ and donate
+
 ## License
 
 The source code comes under the liberal MIT License, making throw-able great for all types of applications.
