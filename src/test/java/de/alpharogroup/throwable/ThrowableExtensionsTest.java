@@ -41,45 +41,8 @@ public class ThrowableExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}
-	 * @throws IOException
-	 */
-	@SuppressWarnings("null")
-	@Test
-	public void testNewThrowableMessage() {
-
-		String expected;
-		String actual;
-		actual = null;
-		try
-		{
-			final Object objNull = null;
-			objNull.getClass();
-		}
-		catch (final NullPointerException npe)
-		{
-			actual = ThrowableExtensions.newThrowableMessage(npe, "NPE");
-		}
-		expected = "NPE [NullPointerException]: empty message";
-		assertEquals(actual, expected);
-
-		try
-		{
-			final BeanTester beanTester = new BeanTester();
-			beanTester.testBean(ThrowableExtensions.class);
-		}
-		catch (final Exception e)
-		{
-			actual = ThrowableExtensions.newThrowableMessage(e, "Fatal");
-		}
-
-		expected = "Fatal [BeanTestException]: Cannot test bean";
-		assertTrue(actual.startsWith(expected));
-
-	}
-
-	/**
 	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
+	 * 
 	 * @throws IOException
 	 */
 	@SuppressWarnings("null")
@@ -130,6 +93,7 @@ public class ThrowableExtensionsTest
 
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTraceElements(Throwable, String...)}
+	 * 
 	 * @throws IOException
 	 */
 	@SuppressWarnings("null")
@@ -176,6 +140,46 @@ public class ThrowableExtensionsTest
 
 		expected = "foo, bar";
 		assertTrue(actual.startsWith(expected));
+	}
+
+	/**
+	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}
+	 * 
+	 * @throws IOException
+	 */
+	@SuppressWarnings("null")
+	@Test
+	public void testNewThrowableMessage()
+	{
+
+		String expected;
+		String actual;
+		actual = null;
+		try
+		{
+			final Object objNull = null;
+			objNull.getClass();
+		}
+		catch (final NullPointerException npe)
+		{
+			actual = ThrowableExtensions.newThrowableMessage(npe, "NPE");
+		}
+		expected = "NPE [NullPointerException]: empty message";
+		assertEquals(actual, expected);
+
+		try
+		{
+			final BeanTester beanTester = new BeanTester();
+			beanTester.testBean(ThrowableExtensions.class);
+		}
+		catch (final Exception e)
+		{
+			actual = ThrowableExtensions.newThrowableMessage(e, "Fatal");
+		}
+
+		expected = "Fatal [BeanTestException]: Cannot test bean";
+		assertTrue(actual.startsWith(expected));
+
 	}
 
 	/**
