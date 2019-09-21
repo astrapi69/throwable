@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -8,10 +9,10 @@
 		<version>5</version>
 		<relativePath></relativePath>
 	</parent>
-	
-  <artifactId>throw-able</artifactId>
-  <version>1.1-SNAPSHOT</version>
-  
+
+	<artifactId>throw-able</artifactId>
+	<version>1.1</version>
+
 	<name>${project.artifactId}</name>
 
 	<description>
@@ -53,104 +54,5 @@
 		</dependency>
 
 	</dependencies>
-	
-	<build>
 
-		<resources>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-					<exclude>**/package.html</exclude>
-				</excludes>
-			</resource>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/resources</directory>
-			</resource>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/site</directory>
-			</resource>
-
-		</resources>
-
-		<testResources>
-
-			<testResource>
-				<filtering>false</filtering>
-				<directory>src/test/java</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-					<exclude>**/package.html</exclude>
-				</excludes>
-			</testResource>
-			<testResource>
-				<filtering>false</filtering>
-				<directory>src/test/resources</directory>
-			</testResource>
-
-		</testResources>
-
-		<pluginManagement>
-
-			<plugins>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>cobertura-maven-plugin</artifactId>
-					<configuration>
-						<instrumentation>
-							<excludes>
-								<!-- abstract classes -->
-								<!-- enums -->
-								<!-- beans -->
-								<!-- constant classes with only constants -->
-								<!-- interfaces -->
-								<!-- exceptions -->
-								<!-- deprecated classes -->
-								<!-- explicit abstract classes -->
-								<!-- explicit bean classes -->
-								<!-- explicit deprecated classes -->
-								<!-- explicit enums -->
-								<!-- explicit interfaces -->
-								<!-- explicit constant classes with only constants -->
-								<!-- explicit delegation classes -->
-							</excludes>
-						</instrumentation>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>clean</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-			</plugins>
-
-		</pluginManagement>
-
-		<plugins>
-
-			<plugin>
-				<inherited>true</inherited>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-
-		</plugins>
-
-	</build>
-	
 </project>
