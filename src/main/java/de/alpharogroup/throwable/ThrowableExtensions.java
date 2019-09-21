@@ -49,14 +49,16 @@ public final class ThrowableExtensions
 	 *
 	 * @param throwable
 	 *            the {@link Throwable} object
+	 * @param additionalInfos
+	 *            the additional infos
 	 * @return the stacktrace as a {@link String} object
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTrace(final @NonNull Throwable throwable, String... additionalInfo)
-		throws IOException
+	public static String getStackTrace(final @NonNull Throwable throwable,
+		String... additionalInfos) throws IOException
 	{
-		StringBuilder stacktrace = getAdditionalInfos(additionalInfo);
+		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			throwable.printStackTrace(pw);
@@ -114,7 +116,8 @@ public final class ThrowableExtensions
 		StringBuilder stacktrace = new StringBuilder();
 		if (additionalInfos != null && 0 < additionalInfos.length)
 		{
-			stacktrace.append(Arrays.stream(additionalInfos).map(Object::toString).collect(Collectors.joining(delimiter)));
+			stacktrace.append(Arrays.stream(additionalInfos).map(Object::toString)
+				.collect(Collectors.joining(delimiter)));
 			stacktrace.append(" ");
 		}
 		return stacktrace;
