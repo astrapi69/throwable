@@ -4,9 +4,13 @@
 Version 1.1-SNAPSHOT
 -------------
 
+ADDED: 
+
+- added new factory method for create a custom message from a given Throwable with additional infos
+
 CHANGED:
 
-- update of parent version to 4.8
+- update of parent version to 5
 
 Version 1
 -------------

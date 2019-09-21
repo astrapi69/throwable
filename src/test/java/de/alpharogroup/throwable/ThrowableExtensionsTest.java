@@ -24,7 +24,10 @@
  */
 package de.alpharogroup.throwable;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
+
+import java.io.IOException;
 
 import org.meanbean.factories.ObjectCreationException;
 import org.meanbean.test.BeanTestException;
@@ -38,11 +41,50 @@ public class ThrowableExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
+	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}
+	 * @throws IOException
 	 */
 	@SuppressWarnings("null")
 	@Test
-	public void testGetStackTrace()
+	public void testNewThrowableMessage() {
+
+		String expected;
+		String actual;
+		actual = null;
+		try
+		{
+			final Object objNull = null;
+			objNull.getClass();
+		}
+		catch (final NullPointerException npe)
+		{
+			actual = ThrowableExtensions.newThrowableMessage(npe, "NPE");
+		}
+		expected = "NPE [NullPointerException]: empty message";
+		assertEquals(actual, expected);
+
+		try
+		{
+			final BeanTester beanTester = new BeanTester();
+			beanTester.testBean(ThrowableExtensions.class);
+		}
+		catch (final Exception e)
+		{
+			actual = ThrowableExtensions.newThrowableMessage(e, "Fatal");
+		}
+
+		expected = "Fatal [BeanTestException]: Cannot test bean";
+		assertTrue(actual.startsWith(expected));
+
+	}
+
+	/**
+	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
+	 * @throws IOException
+	 */
+	@SuppressWarnings("null")
+	@Test
+	public void testGetStackTrace() throws IOException
 	{
 		String expected;
 		String actual;
@@ -88,10 +130,11 @@ public class ThrowableExtensionsTest
 
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTraceElements(Throwable, String...)}
+	 * @throws IOException
 	 */
 	@SuppressWarnings("null")
 	@Test
-	public void testGetStackTraceElements()
+	public void testGetStackTraceElements() throws IOException
 	{
 		String expected;
 		String actual;
