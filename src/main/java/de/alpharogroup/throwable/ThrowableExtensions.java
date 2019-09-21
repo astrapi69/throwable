@@ -28,11 +28,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import lombok.NonNull;
-import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -47,15 +46,17 @@ public final class ThrowableExtensions
 
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
-	 * Note: can throw a {@link IOException} decorated in a {@link RuntimeException}
 	 *
 	 * @param throwable
 	 *            the {@link Throwable} object
 	 * @return the stacktrace as a {@link String} object
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
-	@SneakyThrows public static String getStackTrace(final @NonNull Throwable throwable, String... additionalInfo)
+	public static String getStackTrace(final @NonNull Throwable throwable, String... additionalInfo)
+		throws IOException
 	{
-		StringBuilder stacktrace = getAdditionalInfo(additionalInfo, Arrays.stream(additionalInfo));
+		StringBuilder stacktrace = getAdditionalInfos(additionalInfo);
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			throwable.printStackTrace(pw);
@@ -70,13 +71,16 @@ public final class ThrowableExtensions
 	 *
 	 * @param throwable
 	 *            the throwable
-	 * @param additionalInfo
+	 * @param additionalInfos
 	 *            the additional information to the given throwable
 	 * @return the stack trace elements
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
-	@SneakyThrows public static String getStackTraceElements(@NonNull Throwable throwable, String... additionalInfo)
+	public static String getStackTraceElements(@NonNull Throwable throwable,
+		String... additionalInfos) throws IOException
 	{
-		StringBuilder stacktrace = getAdditionalInfo(additionalInfo, Arrays.stream(additionalInfo));
+		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
 			pw.println(throwable.getClass().toString());
@@ -100,15 +104,37 @@ public final class ThrowableExtensions
 		return stacktrace.toString();
 	}
 
-	private static StringBuilder getAdditionalInfo(String[] additionalInfo, Stream<String> stream)
+	private static StringBuilder getAdditionalInfos(String... additionalInfos)
+	{
+		return getAdditionalInfos(", ", additionalInfos);
+	}
+
+	private static StringBuilder getAdditionalInfos(String delimiter, String... additionalInfos)
 	{
 		StringBuilder stacktrace = new StringBuilder();
-		if (additionalInfo != null && 0 < additionalInfo.length)
+		if (additionalInfos != null && 0 < additionalInfos.length)
 		{
-			stacktrace.append(stream.map(Object::toString).collect(Collectors.joining(", ")));
+			stacktrace.append(Arrays.stream(additionalInfos).map(Object::toString).collect(Collectors.joining(delimiter)));
 			stacktrace.append(" ");
 		}
 		return stacktrace;
+	}
+
+	/**
+	 * Factory method for create the message from the given throwable object as a {@link String}
+	 * object. <br>
+	 *
+	 * @param throwable
+	 *            the throwable
+	 * @param additionalInfo
+	 *            the additional info
+	 * @return the throwable message
+	 */
+	public static String newThrowableMessage(@NonNull Throwable throwable, String additionalInfo)
+	{
+		return new StringBuilder().append(additionalInfo).append(" [")
+			.append(throwable.getClass().getSimpleName()).append("]: ")
+			.append(Objects.toString(throwable.getMessage(), "empty message")).toString();
 	}
 
 }
