@@ -28,11 +28,15 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.meanbean.factories.ObjectCreationException;
 import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
+
+import de.alpharogroup.throwable.api.ThrowableConsumer;
 
 /**
  * The unit test class for the class {@link ThrowableExtensions}
@@ -42,8 +46,9 @@ public class ThrowableExtensionsTest
 
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
-	 * 
+	 *
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
 	@SuppressWarnings("null")
 	@Test
@@ -91,10 +96,12 @@ public class ThrowableExtensionsTest
 		assertTrue(actual.startsWith(expected));
 	}
 
+
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTraceElements(Throwable, String...)}
-	 * 
+	 *
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
 	@SuppressWarnings("null")
 	@Test
@@ -143,9 +150,7 @@ public class ThrowableExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}
-	 * 
-	 * @throws IOException
+	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}.
 	 */
 	@SuppressWarnings("null")
 	@Test
@@ -180,6 +185,27 @@ public class ThrowableExtensionsTest
 		expected = "Fatal [BeanTestException]: Cannot test bean";
 		assertTrue(actual.startsWith(expected));
 
+	}
+
+	/**
+	 * Test method for {@link ThrowableExtensions#toRuntimeExceptionIfNeeded(ThrowableConsumer)}
+	 */
+	@Test
+	public void testToRuntimeExceptionIfNeeded()
+	{
+		List<Integer> list = Arrays.asList(5, 4, 3, 2, 1);
+		list.forEach(ThrowableExtensions.toRuntimeExceptionIfNeeded(i -> Thread.sleep(i)));
+	}
+
+	/**
+	 * Test method for {@link ThrowableExtensions#toRuntimeExceptionIfNeeded(ThrowableConsumer)}
+	 */
+	@Test(expectedExceptions = { RuntimeException.class })
+	public void testToRuntimeExceptionIfNeededWithThrow()
+	{
+		List<String> integers = Arrays.asList("44", "xyz", "145");
+		integers.forEach(ThrowableExtensions
+			.toRuntimeExceptionIfNeeded(str -> System.out.println(Integer.parseInt(str))));
 	}
 
 	/**

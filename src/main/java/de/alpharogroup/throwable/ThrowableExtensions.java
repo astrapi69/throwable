@@ -29,8 +29,10 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import de.alpharogroup.throwable.api.ThrowableConsumer;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
@@ -43,6 +45,32 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class ThrowableExtensions
 {
+
+	/**
+	 * Consume and if an checked exception occurs it is decorated in to a
+	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
+	 * see unit tests
+	 *
+	 * @param <T>
+	 *            the generic type
+	 * @param throwableConsumer
+	 *            the throwable consumer
+	 * @return the consumer
+	 */
+	public static <T> Consumer<T> toRuntimeExceptionIfNeeded(
+		ThrowableConsumer<T, Throwable> throwableConsumer)
+	{
+		return object -> {
+			try
+			{
+				throwableConsumer.accept(object);
+			}
+			catch (Throwable throwable)
+			{
+				throw new RuntimeException(throwable);
+			}
+		};
+	}
 
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
