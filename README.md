@@ -26,7 +26,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- THROW-ABLE version -->
-		<throw-able.version>1.1</throw-able.version>
+		<throw-able.version>1.2</throw-able.version>
 			...
 	</properties>
 			...
@@ -41,6 +41,23 @@ Than you can add the dependency to your dependencies:
 			...
 		</dependencies>
 
+			
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of throw-able:
+
+```
+ext {
+			...
+    throwAbleVersion = "1.2"
+			...
+}
+dependencies {
+			...
+compile "de.alpharogroup:throw-able:${throwAbleVersion}"
+			...
+}
+```
 
 ## Want to Help and improve it? ###
 
@@ -100,4 +117,3 @@ Open Source:
 |Many thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects.|
 |![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)|
 |Many thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects.|
-

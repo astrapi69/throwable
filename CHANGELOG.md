@@ -1,12 +1,25 @@
 ## Change log
 ----------------------
 
+Version 1.2
+-------------
+
+ADDED: 
+
+- new consumer functional interface that provide a method that can handle checked exceptions
+- new method that creates a consumer that can handle checked exceptions
+
+CHANGED:
+
+- migrate to gradle build system
+- removed all maven related files
+
 Version 1.1
 -------------
 
 ADDED: 
 
-- added new factory method for create a custom message from a given Throwable with additional infos
+- new factory method for create a custom message from a given Throwable with additional infos
 
 CHANGED:
 
