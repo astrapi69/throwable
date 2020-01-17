@@ -1,6 +1,13 @@
 ## Change log
 ----------------------
 
+Version 1.2.1
+-------------
+
+CHANGED:
+
+- gradle version downgraded to 5.6.4
+
 Version 1.2
 -------------
 
