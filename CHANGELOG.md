@@ -1,6 +1,14 @@
 ## Change log
 ----------------------
 
+Version 1.3
+-------------
+
+CHANGED:
+
+- removed lombok dependency
+- removed all lombok dependent imports
+
 Version 1.2.1
 -------------
 

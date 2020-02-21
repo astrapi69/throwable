@@ -57,10 +57,12 @@ public class ThrowableExtensionsTest
 		String expected;
 		String actual;
 		actual = null;
+		Object nullObject;
+
+		nullObject = null;
 		try
 		{
-			final Object objNull = null;
-			objNull.getClass();
+			nullObject.getClass();
 		}
 		catch (final NullPointerException npe)
 		{
@@ -71,28 +73,14 @@ public class ThrowableExtensionsTest
 
 		try
 		{
-			final BeanTester beanTester = new BeanTester();
-			beanTester.testBean(ThrowableExtensions.class);
+			nullObject.getClass();
 		}
-		catch (final Exception e)
+		catch (final NullPointerException npe)
 		{
-			actual = ThrowableExtensions.getStackTrace(e);
+			actual = ThrowableExtensions.getStackTrace(npe, "foo", "bar");
 		}
 
-		expected = "org.meanbean.test.BeanTestException";
-		assertTrue(actual.startsWith(expected));
-
-		try
-		{
-			final BeanTester beanTester = new BeanTester();
-			beanTester.testBean(ThrowableExtensions.class);
-		}
-		catch (final Exception e)
-		{
-			actual = ThrowableExtensions.getStackTrace(e, "foo", "bar");
-		}
-
-		expected = "foo, bar org.meanbean.test.BeanTestException";
+		expected = "foo, bar java.lang.NullPointerException";
 		assertTrue(actual.startsWith(expected));
 	}
 
@@ -110,10 +98,12 @@ public class ThrowableExtensionsTest
 		String expected;
 		String actual;
 		actual = null;
+		Object nullObject;
+
+		nullObject = null;
 		try
 		{
-			final Object objNull = null;
-			objNull.getClass();
+			nullObject.getClass();
 		}
 		catch (final NullPointerException npe)
 		{
@@ -124,25 +114,11 @@ public class ThrowableExtensionsTest
 
 		try
 		{
-			final BeanTester beanTester = new BeanTester();
-			beanTester.testBean(ThrowableExtensions.class);
+			nullObject.getClass();
 		}
-		catch (final Exception e)
+		catch (final NullPointerException npe)
 		{
-			actual = ThrowableExtensions.getStackTraceElements(e);
-		}
-
-		expected = "class org.meanbean.test.BeanTestException";
-		assertTrue(actual.startsWith(expected));
-
-		try
-		{
-			final BeanTester beanTester = new BeanTester();
-			beanTester.testBean(ThrowableExtensions.class);
-		}
-		catch (final Exception e)
-		{
-			actual = ThrowableExtensions.getStackTraceElements(e, "foo", "bar");
+			actual = ThrowableExtensions.getStackTraceElements(npe, "foo", "bar");
 		}
 
 		expected = "foo, bar";
@@ -160,10 +136,12 @@ public class ThrowableExtensionsTest
 		String expected;
 		String actual;
 		actual = null;
+		Object nullObject;
+
+		nullObject = null;
 		try
 		{
-			final Object objNull = null;
-			objNull.getClass();
+			nullObject.getClass();
 		}
 		catch (final NullPointerException npe)
 		{
@@ -174,17 +152,14 @@ public class ThrowableExtensionsTest
 
 		try
 		{
-			final BeanTester beanTester = new BeanTester();
-			beanTester.testBean(ThrowableExtensions.class);
+			nullObject.getClass();
 		}
-		catch (final Exception e)
+		catch (final NullPointerException npe)
 		{
-			actual = ThrowableExtensions.newThrowableMessage(e, "Fatal");
+			actual = ThrowableExtensions.newThrowableMessage(npe, "Fatal");
 		}
-
-		expected = "Fatal [BeanTestException]: Cannot test bean";
-		assertTrue(actual.startsWith(expected));
-
+		expected = "Fatal [NullPointerException]: empty message";
+		assertEquals(actual, expected);
 	}
 
 	/**
@@ -211,7 +186,7 @@ public class ThrowableExtensionsTest
 	/**
 	 * Test method for {@link ThrowableExtensions}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, ObjectCreationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
