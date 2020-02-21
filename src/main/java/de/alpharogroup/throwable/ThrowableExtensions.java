@@ -24,6 +24,8 @@
  */
 package de.alpharogroup.throwable;
 
+import de.alpharogroup.throwable.api.ThrowableConsumer;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -32,19 +34,18 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import de.alpharogroup.throwable.api.ThrowableConsumer;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
-
 /**
  * The class {@link ThrowableExtensions}
  *
  * @author Asterios Raptis
  * @version 1.0
  */
-@UtilityClass
 public final class ThrowableExtensions
 {
+
+	private ThrowableExtensions()
+	{
+	}
 
 	/**
 	 * Consume and if an checked exception occurs it is decorated in to a
@@ -83,9 +84,10 @@ public final class ThrowableExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTrace(final @NonNull Throwable throwable,
+	public static String getStackTrace(final Throwable throwable,
 		String... additionalInfos) throws IOException
 	{
+		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
@@ -107,9 +109,10 @@ public final class ThrowableExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTraceElements(@NonNull Throwable throwable,
+	public static String getStackTraceElements(Throwable throwable,
 		String... additionalInfos) throws IOException
 	{
+		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
 		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
 		{
@@ -161,8 +164,9 @@ public final class ThrowableExtensions
 	 *            the additional info
 	 * @return the throwable message
 	 */
-	public static String newThrowableMessage(@NonNull Throwable throwable, String additionalInfo)
+	public static String newThrowableMessage(Throwable throwable, String additionalInfo)
 	{
+		Objects.requireNonNull(throwable);
 		return new StringBuilder().append(additionalInfo).append(" [")
 			.append(throwable.getClass().getSimpleName()).append("]: ")
 			.append(Objects.toString(throwable.getMessage(), "empty message")).toString();

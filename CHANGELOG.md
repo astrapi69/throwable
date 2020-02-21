@@ -4,7 +4,10 @@
 Version 1.3-SNAPSHOT
 -------------
 
+CHANGED:
 
+- removed lombok dependency
+- removed all lombok dependent imports
 
 Version 1.2.1
 -------------
