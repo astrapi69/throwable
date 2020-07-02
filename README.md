@@ -26,7 +26,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- THROW-ABLE version -->
-		<throw-able.version>1.3</throw-able.version>
+		<throw-able.version>1.4</throw-able.version>
 			...
 	</properties>
 			...
@@ -49,12 +49,12 @@ You can first define the version in the ext section and add than the following g
 ```
 ext {
 			...
-    throwAbleVersion = "1.3"
+    throwAbleVersion = "1.4"
 			...
 }
 dependencies {
 			...
-compile "de.alpharogroup:throw-able:${throwAbleVersion}"
+compile("de.alpharogroup:throw-able:$throwAbleVersion")
 			...
 }
 ```
