@@ -1,6 +1,19 @@
 ## Change log
 ----------------------
 
+Version 1.4
+-------------
+
+ADDED: 
+
+- new class RuntimeExceptionDecorator that can decorate checked Exception with RuntimeException
+- new class ExceptionExtensions that provides methods for convert exceptions to readable string objects with out throwing IOExceptions
+
+CHANGED:
+
+- update of gradle version to 6.5.1
+- extracted project properties to gradle.properties
+
 Version 1.3
 -------------
 
