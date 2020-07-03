@@ -11,9 +11,71 @@
 
 </div>
 
-Project that holds utilities for get the stacktrace as string from java throwable objects
+Project that holds utilities for get the stacktrace as string from java throwable objects and 
+can decorate checked exceptions and transform them to unchecked exceptions
 
 If you like this project put a ⭐ and donate
+
+# Features
+
+- Transform stacktrace object from Throwable(Exceptions, Errors) to String object 
+- Transform checked exceptions to unchecked exceptions
+- Transform checked exceptions to unchecked exceptions in streams
+
+# Usage
+
+You can decorate a method that throws a checked exceptions with the class RuntimeExceptionDecorator
+
+```
+public final class FileFactory
+{
+	public static FileCreationState newFile(final File file) throws IOException
+	{
+		FileCreationState fileCreationState = FileCreationState.ALREADY_EXISTS;
+		if (!file.exists())
+		{
+			fileCreationState = FileCreationState.FAILED;
+			newParentDirectories(file);
+			if (file.createNewFile())
+			{
+				fileCreationState = FileCreationState.CREATED;
+			}
+		}
+		return fileCreationState;
+	}
+
+    public static FileCreationState createFile(final File file)
+    {
+		return RuntimeExceptionDecorator.decorate(()-> newFile(file));
+    }
+}
+```
+
+So the method FileFactory#createFile decorates the method (that throws a checked IOExceptions) FileFactory#newFile 
+and do not need to have a throw clause in the method signature.
+
+```
+public final class CopyFileExtensions
+{
+	public static void copyFiles(final List<File> sources, final File destination,
+		final Charset sourceEncoding, final Charset destinationEncoding, final boolean lastModified)
+	{
+		if (!destination.exists())
+		{
+			FileFactory.newDirectory(destination);
+		}
+		sources.stream().forEach(ThrowableExtensions.toRuntimeExceptionIfNeeded(file -> {
+			File destinationFile = new File(destination, file.getName());
+			CopyFileExtensions.copyFile(file, destinationFile, sourceEncoding, destinationEncoding,
+				lastModified);
+		}));
+	}
+    ...
+}
+```
+
+So you can use the method ThrowableExtensions#toRuntimeExceptionIfNeeded for streams as you can see
+in the above example. This is provided with the inteface ThrowableConsumer that is a FunctionalInterface 
 
 ## License
 
@@ -103,7 +165,8 @@ Here is a list of awesome similar projects:
 
 Open Source:
 
- * [dtd2xsdjava](https://code.google.com/archive/p/dtd2xsdjava/) Convert dtd files to xml schema definition file
+ * [throwing-function](https://github.com/pivovarit/throwing-function) Checked Exceptions-enabled Java 8+ functional interfaces + adapters
+ * [sneakythrow](https://github.com/rainerhahnekamp/sneakythrow) SneakyThrow is a Java library to ignore checked exceptions
 
 ## Credits
 
