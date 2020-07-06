@@ -84,8 +84,8 @@ public final class ThrowableExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTrace(final Throwable throwable,
-		String... additionalInfos) throws IOException
+	public static String getStackTrace(final Throwable throwable, String... additionalInfos)
+		throws IOException
 	{
 		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
@@ -109,8 +109,8 @@ public final class ThrowableExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTraceElements(Throwable throwable,
-		String... additionalInfos) throws IOException
+	public static String getStackTraceElements(Throwable throwable, String... additionalInfos)
+		throws IOException
 	{
 		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);

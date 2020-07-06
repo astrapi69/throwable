@@ -32,7 +32,9 @@ package de.alpharogroup.throwable;
  */
 public final class ExceptionExtensions
 {
-	private ExceptionExtensions(){}
+	private ExceptionExtensions()
+	{
+	}
 
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
@@ -43,23 +45,22 @@ public final class ExceptionExtensions
 	 */
 	public static String getStackTrace(final Exception exception, String... additionalInfos)
 	{
-		return RuntimeExceptionDecorator.decorate(()-> ThrowableExtensions.getStackTrace(exception, additionalInfos));
+		return RuntimeExceptionDecorator
+			.decorate(() -> ThrowableExtensions.getStackTrace(exception, additionalInfos));
 	}
 
 	/**
 	 * Gets the stack trace elements from the given Throwable and returns a {@link String} object
 	 * from it.
 	 *
-	 * @param exception
-	 *            the exception
-	 * @param additionalInfos
-	 *            the additional information to the given exception
+	 * @param exception       the exception
+	 * @param additionalInfos the additional information to the given exception
 	 * @return the stack trace elements
 	 */
-	public static String getStackTraceElements(Exception exception,
-		String... additionalInfos)
+	public static String getStackTraceElements(Exception exception, String... additionalInfos)
 	{
-		return RuntimeExceptionDecorator.decorate(()-> ThrowableExtensions.getStackTraceElements(exception, additionalInfos));
+		return RuntimeExceptionDecorator
+			.decorate(() -> ThrowableExtensions.getStackTraceElements(exception, additionalInfos));
 	}
 
 }

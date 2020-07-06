@@ -1,8 +1,8 @@
 /**
  * The MIT License
- *
+ * <p>
  * Copyright (C) 2015 Asterios Raptis
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -25,33 +25,33 @@
 package de.alpharogroup.throwable;
 
 import de.alpharogroup.throwable.api.RuntimeExceptionDecoratable;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
 
 /**
- * The class {@link RuntimeExceptionDecorator}
- *
- * @author Asterios Raptis
- * @version 1.0
+ * The unit test class for the class {@link RuntimeExceptionDecorator}
  */
-public class RuntimeExceptionDecorator
+public class RuntimeExceptionDecoratorTest
 {
 
 	/**
-	 * Gets the stacktrace as a {@link String} object. <br>
-	 *
-	 * @param decoratable       the function object to decorate
-	 * @return the generic type of the return type of the decorated function or throws
-	 * a {@link RuntimeException} that decorates the thrown exception of the origin function
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(RuntimeExceptionDecoratable)}
 	 */
-	public static <T> T decorate(RuntimeExceptionDecoratable<T> decoratable)
+	@Test(expectedExceptions = RuntimeException.class) public void testDecorate()
 	{
-		try
-		{
-			return decoratable.execute();
-		}
-		catch (Exception exception)
-		{
-			throw new RuntimeException(exception);
-		}
+		Object nullObject;
+
+		nullObject = null;
+
+		RuntimeExceptionDecorator.decorate(() -> nullObject.getClass());
 	}
 
+	/**
+	 * Test method for {@link RuntimeExceptionDecorator}
+	 */
+	@Test public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(RuntimeExceptionDecorator.class);
+	}
 }
