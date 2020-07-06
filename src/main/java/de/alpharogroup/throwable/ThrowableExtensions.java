@@ -125,12 +125,7 @@ public final class ThrowableExtensions
 				{
 					pw.println("\tat " + stackTraceElement);
 				}
-
 				throwable = throwable.getCause();
-				if (throwable != null)
-				{
-					pw.println("Caused by:\r\n");
-				}
 			}
 			stacktrace.append(sw.toString());
 		}

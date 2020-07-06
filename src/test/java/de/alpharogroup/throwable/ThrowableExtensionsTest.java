@@ -29,6 +29,8 @@ import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
@@ -113,7 +115,16 @@ public class ThrowableExtensionsTest
 			actual = ThrowableExtensions.getStackTraceElements(npe, "foo", "bar");
 		}
 
-		expected = "foo, bar";
+		try
+		{
+			URL url = new URL(".*https://www.google.com");
+		}
+		catch (final MalformedURLException e)
+		{
+			actual = ThrowableExtensions.getStackTraceElements(e, "foo", "bar");
+		}
+
+		expected = "foo, bar class java.net.MalformedURLException";
 		assertTrue(actual.startsWith(expected));
 	}
 
