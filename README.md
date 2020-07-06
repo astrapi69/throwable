@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Build Status](https://travis-ci.org/astrapi69/throw-able.svg?branch=master)](https://travis-ci.org/astrapi69/throw-able) 
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/throw-able/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/throw-able?branch=master)
+[![Coverage Status](https://codecov.io/gh/astrapi69/throw-able/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throw-able)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/throw-able.svg?style=flat)](https://github.com/astrapi69/throw-able/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)](http://www.javadoc.io/doc/de.alpharogroup/throw-able)
