@@ -140,7 +140,7 @@ public final class ThrowableExtensions
 	private static StringBuilder getAdditionalInfos(String delimiter, String... additionalInfos)
 	{
 		StringBuilder stacktrace = new StringBuilder();
-		if (additionalInfos != null && 0 < additionalInfos.length)
+		if (0 < additionalInfos.length)
 		{
 			stacktrace.append(Arrays.stream(additionalInfos).map(Object::toString)
 				.collect(Collectors.joining(delimiter)));
