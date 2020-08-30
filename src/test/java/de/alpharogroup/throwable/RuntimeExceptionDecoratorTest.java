@@ -25,8 +25,12 @@
 package de.alpharogroup.throwable;
 
 import de.alpharogroup.throwable.api.RuntimeExceptionDecoratable;
+import de.alpharogroup.throwable.api.ThrowableConsumer;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * The unit test class for the class {@link RuntimeExceptionDecorator}
@@ -44,6 +48,26 @@ public class RuntimeExceptionDecoratorTest
 		nullObject = null;
 
 		RuntimeExceptionDecorator.decorate(() -> nullObject.getClass());
+	}
+
+	/**
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableConsumer)}
+	 */
+	@Test public void testToRuntimeExceptionIfNeeded()
+	{
+		List<Integer> list = Arrays.asList(5, 4, 3, 2, 1);
+		list.forEach(RuntimeExceptionDecorator.decorate(i -> Thread.sleep(i)));
+	}
+
+	/**
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableConsumer)}
+	 */
+	@Test(expectedExceptions = {
+		RuntimeException.class }) public void testDecorateWithoutReturnValue()
+	{
+		List<String> integers = Arrays.asList("44", "xyz", "145");
+		integers.forEach(
+			RuntimeExceptionDecorator.decorate(str -> System.out.println(Integer.parseInt(str))));
 	}
 
 	/**

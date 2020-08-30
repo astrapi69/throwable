@@ -4,6 +4,10 @@
 Version 1.5-SNAPSHOT
 -------------
 
+CHANGED:
+
+- moved method ThrowableExtensions#toRuntimeExceptionIfNeeded to appropriate RuntimeExceptionDecorator class with a new name decorate
+
 Version 1.4
 -------------
 

@@ -25,6 +25,9 @@
 package de.alpharogroup.throwable;
 
 import de.alpharogroup.throwable.api.RuntimeExceptionDecoratable;
+import de.alpharogroup.throwable.api.ThrowableConsumer;
+
+import java.util.function.Consumer;
 
 /**
  * The class {@link RuntimeExceptionDecorator}
@@ -52,6 +55,29 @@ public class RuntimeExceptionDecorator
 		{
 			throw new RuntimeException(exception);
 		}
+	}
+
+	/**
+	 * Consume and if an checked exception occurs it is decorated in to a
+	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
+	 * see unit tests
+	 *
+	 * @param <T>               the generic type
+	 * @param throwableConsumer the throwable consumer
+	 * @return the consumer
+	 */
+	public static <T> Consumer<T> decorate(ThrowableConsumer<T, Throwable> throwableConsumer)
+	{
+		return object -> {
+			try
+			{
+				throwableConsumer.accept(object);
+			}
+			catch (Throwable throwable)
+			{
+				throw new RuntimeException(throwable);
+			}
+		};
 	}
 
 }

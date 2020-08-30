@@ -52,13 +52,15 @@ public final class ThrowableExtensions
 	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
 	 * see unit tests
 	 *
-	 * @param <T>
-	 *            the generic type
-	 * @param throwableConsumer
-	 *            the throwable consumer
+	 * @param <T>               the generic type
+	 * @param throwableConsumer the throwable consumer
 	 * @return the consumer
+	 * @deprecated use instead the decorate method <code>decorate</code> with the same signature
+	 * from the <code>RuntimeExceptionDecorator</code>
+	 * <br><br>
+	 * Note: will be removed in the next minor version
 	 */
-	public static <T> Consumer<T> toRuntimeExceptionIfNeeded(
+	@Deprecated public static <T> Consumer<T> toRuntimeExceptionIfNeeded(
 		ThrowableConsumer<T, Throwable> throwableConsumer)
 	{
 		return object -> {
