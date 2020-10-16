@@ -51,8 +51,11 @@ public final class FileFactory
 }
 ```
 
-So the method FileFactory#createFile decorates the method (that throws a checked IOExceptions) FileFactory#newFile 
-and do not need to have a throw clause in the method signature.
+The above example shows the method FileFactory#newFile that throws a checked IOExceptions.
+The method FileFactory#createFile decorates the method FileFactory#newFile with the method decorate
+ of the utility class RuntimeExceptionDecorator and do not have to declare a throw clause in the 
+ method signature.
+Note: the method FileFactory#createFile returns a FileCreationState object
 
 ```
 public final class CopyFileExtensions
@@ -64,7 +67,7 @@ public final class CopyFileExtensions
 		{
 			FileFactory.newDirectory(destination);
 		}
-		sources.stream().forEach(ThrowableExtensions.toRuntimeExceptionIfNeeded(file -> {
+		sources.stream().forEach(RuntimeExceptionDecorator.decorate(file -> {
 			File destinationFile = new File(destination, file.getName());
 			CopyFileExtensions.copyFile(file, destinationFile, sourceEncoding, destinationEncoding,
 				lastModified);
@@ -73,9 +76,9 @@ public final class CopyFileExtensions
     ...
 }
 ```
-
-So you can use the method ThrowableExtensions#toRuntimeExceptionIfNeeded for streams as you can see
-in the above example. This is provided with the inteface ThrowableConsumer that is a FunctionalInterface 
+The method RuntimeExceptionDecorator#decorate is overloaded, so you can use it also for streams 
+as you can see in the above example. 
+This is provided with the inteface ThrowableConsumer that is a FunctionalInterface.
 
 ## License
 

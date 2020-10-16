@@ -29,8 +29,14 @@ import de.alpharogroup.throwable.api.ThrowableConsumer;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.testng.Assert.assertNotNull;
 
 /**
  * The unit test class for the class {@link RuntimeExceptionDecorator}
@@ -51,12 +57,37 @@ public class RuntimeExceptionDecoratorTest
 	}
 
 	/**
+	 * Copies(serialize) the given object to a byte array
+	 *
+	 * @param <T>    the generic type of the given object
+	 * @param object The Object to convert into a byte array
+	 * @return The byte array from the Object
+	 * @throws IOException Signals that an I/O exception has occurred
+	 */
+	public static <T extends Serializable> byte[] toByteArray(final T object) throws IOException
+	{
+		try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(1024);
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);)
+		{
+			objectOutputStream.writeObject(object);
+			return byteArrayOutputStream.toByteArray();
+		}
+	}
+
+	/**
 	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableConsumer)}
 	 */
 	@Test public void testToRuntimeExceptionIfNeeded()
 	{
+		String value;
+
 		List<Integer> list = Arrays.asList(5, 4, 3, 2, 1);
 		list.forEach(RuntimeExceptionDecorator.decorate(i -> Thread.sleep(i)));
+
+		value = "foo";
+		byte[] result = RuntimeExceptionDecorator.decorate(() -> toByteArray(value));
+		assertNotNull(result);
+
 	}
 
 	/**
@@ -66,8 +97,9 @@ public class RuntimeExceptionDecoratorTest
 		RuntimeException.class }) public void testDecorateWithoutReturnValue()
 	{
 		List<String> integers = Arrays.asList("44", "xyz", "145");
-		integers.forEach(
-			RuntimeExceptionDecorator.decorate(str -> System.out.println(Integer.parseInt(str))));
+		integers.forEach(RuntimeExceptionDecorator.decorate(str -> {
+			System.out.println(Integer.parseInt(str));
+		}));
 	}
 
 	/**
