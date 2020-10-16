@@ -22,6 +22,50 @@ If you like this project put a ⭐ and donate
 - Transform checked exceptions to unchecked exceptions
 - Transform checked exceptions to unchecked exceptions in streams
 
+## License
+
+The source code comes under the liberal MIT License, making throw-able great for all types of applications.
+
+Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of throw-able:
+
+Than you can add the dependency to your dependencies:
+
+	<properties>
+			...
+		<!-- THROW-ABLE version -->
+		<throw-able.version>1.4</throw-able.version>
+			...
+	</properties>
+			...
+		<dependencies>
+			...
+            <!-- THROW-ABLE DEPENDENCY -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>throw-able</artifactId>
+				<version>${throw-able.version}</version>
+			</dependency>
+			...
+		</dependencies>
+
+			
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of throw-able:
+
+```
+ext {
+			...
+    throwAbleVersion = "1.4"
+			...
+}
+dependencies {
+			...
+compile("de.alpharogroup:throw-able:$throwAbleVersion")
+			...
+}
+```
+
 # Usage
 
 You can decorate a method that throws a checked exceptions with the class RuntimeExceptionDecorator
@@ -79,50 +123,6 @@ public final class CopyFileExtensions
 The method RuntimeExceptionDecorator#decorate is overloaded, so you can use it also for streams 
 as you can see in the above example. 
 This is provided with the inteface ThrowableConsumer that is a FunctionalInterface.
-
-## License
-
-The source code comes under the liberal MIT License, making throw-able great for all types of applications.
-
-Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of throw-able:
-
-Than you can add the dependency to your dependencies:
-
-	<properties>
-			...
-		<!-- THROW-ABLE version -->
-		<throw-able.version>1.4</throw-able.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
-            <!-- THROW-ABLE DEPENDENCY -->
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>throw-able</artifactId>
-				<version>${throw-able.version}</version>
-			</dependency>
-			...
-		</dependencies>
-
-			
-## gradle dependency
-
-You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of throw-able:
-
-```
-ext {
-			...
-    throwAbleVersion = "1.4"
-			...
-}
-dependencies {
-			...
-compile("de.alpharogroup:throw-able:$throwAbleVersion")
-			...
-}
-```
 
 ## Want to Help and improve it? ###
 
