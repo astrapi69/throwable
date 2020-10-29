@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
+package io.github.astrapi69.throwable;
 
 /**
  * The class {@link ExceptionExtensions} provides methods for convert exceptions to readable string objects.

@@ -22,17 +22,14 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
+package io.github.astrapi69.throwable;
 
-import de.alpharogroup.throwable.api.ThrowableConsumer;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
@@ -161,26 +158,6 @@ public class ThrowableExtensionsTest
 		}
 		expected = "Fatal [NullPointerException]: empty message";
 		assertEquals(actual, expected);
-	}
-
-	/**
-	 * Test method for {@link ThrowableExtensions#toRuntimeExceptionIfNeeded(ThrowableConsumer)}
-	 */
-	@Test public void testToRuntimeExceptionIfNeeded()
-	{
-		List<Integer> list = Arrays.asList(5, 4, 3, 2, 1);
-		list.forEach(ThrowableExtensions.toRuntimeExceptionIfNeeded(i -> Thread.sleep(i)));
-	}
-
-	/**
-	 * Test method for {@link ThrowableExtensions#toRuntimeExceptionIfNeeded(ThrowableConsumer)}
-	 */
-	@Test(expectedExceptions = {
-		RuntimeException.class }) public void testToRuntimeExceptionIfNeededWithThrow()
-	{
-		List<String> integers = Arrays.asList("44", "xyz", "145");
-		integers.forEach(ThrowableExtensions
-			.toRuntimeExceptionIfNeeded(str -> System.out.println(Integer.parseInt(str))));
 	}
 
 	/**

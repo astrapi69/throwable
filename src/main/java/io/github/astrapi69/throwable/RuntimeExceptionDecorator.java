@@ -22,10 +22,10 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
+package io.github.astrapi69.throwable;
 
-import de.alpharogroup.throwable.api.RuntimeExceptionDecoratable;
-import de.alpharogroup.throwable.api.ThrowableConsumer;
+import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
+import io.github.astrapi69.throwable.api.ThrowableConsumer;
 
 import java.util.function.Consumer;
 

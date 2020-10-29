@@ -22,22 +22,24 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable.api;
+package io.github.astrapi69.throwable.api;
 
 /**
- * The interface {@link RuntimeExceptionDecoratable} can handle checked exceptions
+ * The interface {@link ThrowableConsumer} can handle checked exceptions
  *
- * @param <T> the generic type of the return type
+ * @param <T> the type of the input to the operation
+ * @param <E> the type of the exception
  */
-@FunctionalInterface public interface RuntimeExceptionDecoratable<T>
+@FunctionalInterface public interface ThrowableConsumer<T, E extends Throwable>
 {
 
 	/**
-	 * Executes this operation
+	 * Performs this operation on the given argument.
 	 *
-	 * @return the generic type of the return type
-	 * @throws Exception
+	 * @param object
+	 *            the input argument
+	 * @throws E
 	 *             the checked exception
 	 */
-	T execute() throws Exception;
+	void accept(T object) throws E;
 }

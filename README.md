@@ -5,8 +5,8 @@
 [![Build Status](https://travis-ci.org/astrapi69/throw-able.svg?branch=master)](https://travis-ci.org/astrapi69/throw-able) 
 [![Coverage Status](https://codecov.io/gh/astrapi69/throw-able/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throw-able)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/throw-able.svg?style=flat)](https://github.com/astrapi69/throw-able/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able)
-[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)](http://www.javadoc.io/doc/de.alpharogroup/throw-able)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throw-able)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
 </div>
@@ -33,7 +33,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- THROW-ABLE version -->
-		<throw-able.version>1.4</throw-able.version>
+		<throw-able.version>1.5</throw-able.version>
 			...
 	</properties>
 			...
@@ -41,7 +41,7 @@ Than you can add the dependency to your dependencies:
 			...
             <!-- THROW-ABLE DEPENDENCY -->
 			<dependency>
-				<groupId>de.alpharogroup</groupId>
+				<groupId>io.github.astrapi69</groupId>
 				<artifactId>throw-able</artifactId>
 				<version>${throw-able.version}</version>
 			</dependency>
@@ -56,12 +56,12 @@ You can first define the version in the ext section and add than the following g
 ```
 ext {
 			...
-    throwAbleVersion = "1.4"
+    throwAbleVersion = "1.5"
 			...
 }
 dependencies {
 			...
-compile("de.alpharogroup:throw-able:$throwAbleVersion")
+implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
 			...
 }
 ```
@@ -181,5 +181,5 @@ Open Source:
 |Many thanks to [sonatype repository](https://oss.sonatype.org) for providing a free maven repository service for open source projects.|
 |![Coverage Status](https://coveralls.io/repos/github/astrapi69/throw-able/badge.svg)|
 |Many thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects.|
-|![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)|
+|![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)|
 |Many thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects.|

@@ -22,16 +22,13 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
-
-import de.alpharogroup.throwable.api.ThrowableConsumer;
+package io.github.astrapi69.throwable;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -45,34 +42,6 @@ public final class ThrowableExtensions
 
 	private ThrowableExtensions()
 	{
-	}
-
-	/**
-	 * Consume and if an checked exception occurs it is decorated in to a
-	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
-	 * see unit tests
-	 *
-	 * @param <T>               the generic type
-	 * @param throwableConsumer the throwable consumer
-	 * @return the consumer
-	 * @deprecated use instead the decorate method <code>decorate</code> with the same signature
-	 * from the <code>RuntimeExceptionDecorator</code>
-	 * <br><br>
-	 * Note: will be removed in the next minor version
-	 */
-	@Deprecated public static <T> Consumer<T> toRuntimeExceptionIfNeeded(
-		ThrowableConsumer<T, Throwable> throwableConsumer)
-	{
-		return object -> {
-			try
-			{
-				throwableConsumer.accept(object);
-			}
-			catch (Throwable throwable)
-			{
-				throw new RuntimeException(throwable);
-			}
-		};
 	}
 
 	/**

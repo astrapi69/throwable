@@ -22,10 +22,10 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
+package io.github.astrapi69.throwable;
 
-import de.alpharogroup.throwable.api.RuntimeExceptionDecoratable;
-import de.alpharogroup.throwable.api.ThrowableConsumer;
+import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
+import io.github.astrapi69.throwable.api.ThrowableConsumer;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
@@ -67,7 +67,7 @@ public class RuntimeExceptionDecoratorTest
 	public static <T extends Serializable> byte[] toByteArray(final T object) throws IOException
 	{
 		try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(1024);
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);)
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream))
 		{
 			objectOutputStream.writeObject(object);
 			return byteArrayOutputStream.toByteArray();
