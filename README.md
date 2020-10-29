@@ -3,17 +3,24 @@
 <div align="center">
 
 [![Build Status](https://travis-ci.org/astrapi69/throw-able.svg?branch=master)](https://travis-ci.org/astrapi69/throw-able) 
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/throw-able/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/throw-able?branch=master)
+[![Coverage Status](https://codecov.io/gh/astrapi69/throw-able/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throw-able)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/throw-able.svg?style=flat)](https://github.com/astrapi69/throw-able/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/throw-able)
-[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)](http://www.javadoc.io/doc/de.alpharogroup/throw-able)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throw-able)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
 </div>
 
-Project that holds utilities for get the stacktrace as string from java throwable objects
+Project that holds utilities for get the stacktrace as string from java throwable objects and 
+can decorate checked exceptions and transform them to unchecked exceptions
 
 If you like this project put a ⭐ and donate
+
+# Features
+
+- Transform stacktrace object from Throwable(Exceptions, Errors) to String object 
+- Transform checked exceptions to unchecked exceptions
+- Transform checked exceptions to unchecked exceptions in streams
 
 ## License
 
@@ -26,7 +33,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- THROW-ABLE version -->
-		<throw-able.version>1.4</throw-able.version>
+		<throw-able.version>1.5</throw-able.version>
 			...
 	</properties>
 			...
@@ -34,7 +41,7 @@ Than you can add the dependency to your dependencies:
 			...
             <!-- THROW-ABLE DEPENDENCY -->
 			<dependency>
-				<groupId>de.alpharogroup</groupId>
+				<groupId>io.github.astrapi69</groupId>
 				<artifactId>throw-able</artifactId>
 				<version>${throw-able.version}</version>
 			</dependency>
@@ -49,15 +56,73 @@ You can first define the version in the ext section and add than the following g
 ```
 ext {
 			...
-    throwAbleVersion = "1.4"
+    throwAbleVersion = "1.5"
 			...
 }
 dependencies {
 			...
-compile("de.alpharogroup:throw-able:$throwAbleVersion")
+implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
 			...
 }
 ```
+
+# Usage
+
+You can decorate a method that throws a checked exceptions with the class RuntimeExceptionDecorator
+
+```
+public final class FileFactory
+{
+	public static FileCreationState newFile(final File file) throws IOException
+	{
+		FileCreationState fileCreationState = FileCreationState.ALREADY_EXISTS;
+		if (!file.exists())
+		{
+			fileCreationState = FileCreationState.FAILED;
+			newParentDirectories(file);
+			if (file.createNewFile())
+			{
+				fileCreationState = FileCreationState.CREATED;
+			}
+		}
+		return fileCreationState;
+	}
+
+    public static FileCreationState createFile(final File file)
+    {
+		return RuntimeExceptionDecorator.decorate(()-> newFile(file));
+    }
+}
+```
+
+The above example shows the method FileFactory#newFile that throws a checked IOExceptions.
+The method FileFactory#createFile decorates the method FileFactory#newFile with the method decorate
+ of the utility class RuntimeExceptionDecorator and do not have to declare a throw clause in the 
+ method signature.
+Note: the method FileFactory#createFile returns a FileCreationState object
+
+```
+public final class CopyFileExtensions
+{
+	public static void copyFiles(final List<File> sources, final File destination,
+		final Charset sourceEncoding, final Charset destinationEncoding, final boolean lastModified)
+	{
+		if (!destination.exists())
+		{
+			FileFactory.newDirectory(destination);
+		}
+		sources.stream().forEach(RuntimeExceptionDecorator.decorate(file -> {
+			File destinationFile = new File(destination, file.getName());
+			CopyFileExtensions.copyFile(file, destinationFile, sourceEncoding, destinationEncoding,
+				lastModified);
+		}));
+	}
+    ...
+}
+```
+The method RuntimeExceptionDecorator#decorate is overloaded, so you can use it also for streams 
+as you can see in the above example. 
+This is provided with the inteface ThrowableConsumer that is a FunctionalInterface.
 
 ## Want to Help and improve it? ###
 
@@ -103,7 +168,8 @@ Here is a list of awesome similar projects:
 
 Open Source:
 
- * [dtd2xsdjava](https://code.google.com/archive/p/dtd2xsdjava/) Convert dtd files to xml schema definition file
+ * [throwing-function](https://github.com/pivovarit/throwing-function) Checked Exceptions-enabled Java 8+ functional interfaces + adapters
+ * [sneakythrow](https://github.com/rainerhahnekamp/sneakythrow) SneakyThrow is a Java library to ignore checked exceptions
 
 ## Credits
 
@@ -115,5 +181,5 @@ Open Source:
 |Many thanks to [sonatype repository](https://oss.sonatype.org) for providing a free maven repository service for open source projects.|
 |![Coverage Status](https://coveralls.io/repos/github/astrapi69/throw-able/badge.svg)|
 |Many thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects.|
-|![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/throw-able.svg)|
+|![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)|
 |Many thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects.|

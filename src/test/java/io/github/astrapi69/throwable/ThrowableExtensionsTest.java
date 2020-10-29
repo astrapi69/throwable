@@ -22,21 +22,17 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
+package io.github.astrapi69.throwable;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import org.meanbean.factories.ObjectCreationException;
-import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.throwable.api.ThrowableConsumer;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * The unit test class for the class {@link ThrowableExtensions}
@@ -47,12 +43,9 @@ public class ThrowableExtensionsTest
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
 	 *
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred
+	 * @throws IOException Signals that an I/O exception has occurred
 	 */
-	@SuppressWarnings("null")
-	@Test
-	public void testGetStackTrace() throws IOException
+	@SuppressWarnings("null") @Test public void testGetStackTrace() throws IOException
 	{
 		String expected;
 		String actual;
@@ -91,9 +84,7 @@ public class ThrowableExtensionsTest
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	@SuppressWarnings("null")
-	@Test
-	public void testGetStackTraceElements() throws IOException
+	@SuppressWarnings("null") @Test public void testGetStackTraceElements() throws IOException
 	{
 		String expected;
 		String actual;
@@ -121,16 +112,23 @@ public class ThrowableExtensionsTest
 			actual = ThrowableExtensions.getStackTraceElements(npe, "foo", "bar");
 		}
 
-		expected = "foo, bar";
+		try
+		{
+			URL url = new URL(".*https://www.google.com");
+		}
+		catch (final MalformedURLException e)
+		{
+			actual = ThrowableExtensions.getStackTraceElements(e, "foo", "bar");
+		}
+
+		expected = "foo, bar class java.net.MalformedURLException";
 		assertTrue(actual.startsWith(expected));
 	}
 
 	/**
 	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}.
 	 */
-	@SuppressWarnings("null")
-	@Test
-	public void testNewThrowableMessage()
+	@SuppressWarnings("null") @Test public void testNewThrowableMessage()
 	{
 
 		String expected;
@@ -163,31 +161,9 @@ public class ThrowableExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link ThrowableExtensions#toRuntimeExceptionIfNeeded(ThrowableConsumer)}
-	 */
-	@Test
-	public void testToRuntimeExceptionIfNeeded()
-	{
-		List<Integer> list = Arrays.asList(5, 4, 3, 2, 1);
-		list.forEach(ThrowableExtensions.toRuntimeExceptionIfNeeded(i -> Thread.sleep(i)));
-	}
-
-	/**
-	 * Test method for {@link ThrowableExtensions#toRuntimeExceptionIfNeeded(ThrowableConsumer)}
-	 */
-	@Test(expectedExceptions = { RuntimeException.class })
-	public void testToRuntimeExceptionIfNeededWithThrow()
-	{
-		List<String> integers = Arrays.asList("44", "xyz", "145");
-		integers.forEach(ThrowableExtensions
-			.toRuntimeExceptionIfNeeded(str -> System.out.println(Integer.parseInt(str))));
-	}
-
-	/**
 	 * Test method for {@link ThrowableExtensions}
 	 */
-	@Test
-	public void testWithBeanTester()
+	@Test public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(ThrowableExtensions.class);

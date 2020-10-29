@@ -22,44 +22,62 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
+package io.github.astrapi69.throwable;
+
+import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
+import io.github.astrapi69.throwable.api.ThrowableConsumer;
+
+import java.util.function.Consumer;
 
 /**
- * The class {@link ExceptionExtensions} provides methods for convert exceptions to readable string objects.
+ * The class {@link RuntimeExceptionDecorator}
  *
  * @author Asterios Raptis
  * @version 1.0
  */
-public final class ExceptionExtensions
+public class RuntimeExceptionDecorator
 {
-	private ExceptionExtensions(){}
 
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
 	 *
-	 * @param exception       the {@link Exception} object
-	 * @param additionalInfos the additional infos
-	 * @return the stacktrace as a {@link String} object
+	 * @param decoratable       the function object to decorate
+	 * @return the generic type of the return type of the decorated function or throws
+	 * a {@link RuntimeException} that decorates the thrown exception of the origin function
 	 */
-	public static String getStackTrace(final Exception exception, String... additionalInfos)
+	public static <T> T decorate(RuntimeExceptionDecoratable<T> decoratable)
 	{
-		return RuntimeExceptionDecorator.decorate(()-> ThrowableExtensions.getStackTrace(exception, additionalInfos));
+		try
+		{
+			return decoratable.execute();
+		}
+		catch (Exception exception)
+		{
+			throw new RuntimeException(exception);
+		}
 	}
 
 	/**
-	 * Gets the stack trace elements from the given Throwable and returns a {@link String} object
-	 * from it.
+	 * Consume and if an checked exception occurs it is decorated in to a
+	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
+	 * see unit tests
 	 *
-	 * @param exception
-	 *            the exception
-	 * @param additionalInfos
-	 *            the additional information to the given exception
-	 * @return the stack trace elements
+	 * @param <T>               the generic type
+	 * @param throwableConsumer the throwable consumer
+	 * @return the consumer
 	 */
-	public static String getStackTraceElements(Exception exception,
-		String... additionalInfos)
+	public static <T> Consumer<T> decorate(ThrowableConsumer<T, Throwable> throwableConsumer)
 	{
-		return RuntimeExceptionDecorator.decorate(()-> ThrowableExtensions.getStackTraceElements(exception, additionalInfos));
+		return object -> {
+			try
+			{
+				throwableConsumer.accept(object);
+			}
+			catch (Throwable throwable)
+			{
+				throw new RuntimeException(throwable);
+			}
+		};
 	}
 
 }

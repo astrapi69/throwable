@@ -22,38 +22,45 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
-
-import de.alpharogroup.throwable.api.RuntimeExceptionDecoratable;
-
-import java.io.IOException;
+package io.github.astrapi69.throwable;
 
 /**
- * The class {@link RuntimeExceptionDecorator}
+ * The class {@link ExceptionExtensions} provides methods for convert exceptions to readable string objects.
  *
  * @author Asterios Raptis
  * @version 1.0
  */
-public class RuntimeExceptionDecorator
+public final class ExceptionExtensions
 {
+	private ExceptionExtensions()
+	{
+	}
 
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
 	 *
-	 * @param decoratable       the function object to decorate
-	 * @return the generic type of the return type of the decorated function or throws
-	 * a {@link RuntimeException} that decorates the thrown exception of the origin function
+	 * @param exception       the {@link Exception} object
+	 * @param additionalInfos the additional infos
+	 * @return the stacktrace as a {@link String} object
 	 */
-	public static <T> T decorate(RuntimeExceptionDecoratable<T> decoratable)
+	public static String getStackTrace(final Exception exception, String... additionalInfos)
 	{
-		try
-		{
-			return decoratable.execute();
-		}
-		catch (Exception exception)
-		{
-			throw new RuntimeException(exception);
-		}
+		return RuntimeExceptionDecorator
+			.decorate(() -> ThrowableExtensions.getStackTrace(exception, additionalInfos));
+	}
+
+	/**
+	 * Gets the stack trace elements from the given Throwable and returns a {@link String} object
+	 * from it.
+	 *
+	 * @param exception       the exception
+	 * @param additionalInfos the additional information to the given exception
+	 * @return the stack trace elements
+	 */
+	public static String getStackTraceElements(Exception exception, String... additionalInfos)
+	{
+		return RuntimeExceptionDecorator
+			.decorate(() -> ThrowableExtensions.getStackTraceElements(exception, additionalInfos));
 	}
 
 }

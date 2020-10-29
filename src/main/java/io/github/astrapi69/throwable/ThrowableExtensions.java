@@ -22,16 +22,13 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.throwable;
-
-import de.alpharogroup.throwable.api.ThrowableConsumer;
+package io.github.astrapi69.throwable;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -48,32 +45,6 @@ public final class ThrowableExtensions
 	}
 
 	/**
-	 * Consume and if an checked exception occurs it is decorated in to a
-	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
-	 * see unit tests
-	 *
-	 * @param <T>
-	 *            the generic type
-	 * @param throwableConsumer
-	 *            the throwable consumer
-	 * @return the consumer
-	 */
-	public static <T> Consumer<T> toRuntimeExceptionIfNeeded(
-		ThrowableConsumer<T, Throwable> throwableConsumer)
-	{
-		return object -> {
-			try
-			{
-				throwableConsumer.accept(object);
-			}
-			catch (Throwable throwable)
-			{
-				throw new RuntimeException(throwable);
-			}
-		};
-	}
-
-	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
 	 *
 	 * @param throwable
@@ -84,8 +55,8 @@ public final class ThrowableExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTrace(final Throwable throwable,
-		String... additionalInfos) throws IOException
+	public static String getStackTrace(final Throwable throwable, String... additionalInfos)
+		throws IOException
 	{
 		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
@@ -109,8 +80,8 @@ public final class ThrowableExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static String getStackTraceElements(Throwable throwable,
-		String... additionalInfos) throws IOException
+	public static String getStackTraceElements(Throwable throwable, String... additionalInfos)
+		throws IOException
 	{
 		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
@@ -125,12 +96,7 @@ public final class ThrowableExtensions
 				{
 					pw.println("\tat " + stackTraceElement);
 				}
-
 				throwable = throwable.getCause();
-				if (throwable != null)
-				{
-					pw.println("Caused by:\r\n");
-				}
 			}
 			stacktrace.append(sw.toString());
 		}
@@ -145,7 +111,7 @@ public final class ThrowableExtensions
 	private static StringBuilder getAdditionalInfos(String delimiter, String... additionalInfos)
 	{
 		StringBuilder stacktrace = new StringBuilder();
-		if (additionalInfos != null && 0 < additionalInfos.length)
+		if (0 < additionalInfos.length)
 		{
 			stacktrace.append(Arrays.stream(additionalInfos).map(Object::toString)
 				.collect(Collectors.joining(delimiter)));
