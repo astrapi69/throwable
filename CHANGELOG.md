@@ -1,6 +1,13 @@
 ## Change log
 ----------------------
 
+Version 1.6-SNAPSHOT
+-------------
+
+CHANGED:
+
+- update of gradle to new version 6.8
+
 Version 1.5
 -------------
 
@@ -8,7 +15,8 @@ CHANGED:
 
 - update of gradle version to 6.7
 - update of test dependency testng to new version 7.3.0
-- moved method ThrowableExtensions#toRuntimeExceptionIfNeeded to appropriate RuntimeExceptionDecorator class with a new name decorate
+- moved method ThrowableExtensions#toRuntimeExceptionIfNeeded to appropriate
+  RuntimeExceptionDecorator class with a new name decorate
 - changed to new package io.github.astrapi69
 - removed deprecated methods
 
