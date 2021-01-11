@@ -48,10 +48,18 @@ Than you can add the dependency to your dependencies:
 			...
 		</dependencies>
 
-			
 ## gradle dependency
 
-You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of throw-able:
+You can first define the version in the ext section and add than the following gradle dependency to
+your project `build.gradle` if you want to import the core functionality of throw-able:
+
+```
+define version in file gradle.properties
+
+throwAbleVersion=1.5
+```
+
+or in build.gradle ext area
 
 ```
 ext {
@@ -59,9 +67,14 @@ ext {
     throwAbleVersion = "1.5"
 			...
 }
+```
+
+and than add the dependency to the dependencies area
+
+```
 dependencies {
 			...
-implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
+    implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
 			...
 }
 ```
