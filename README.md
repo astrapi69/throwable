@@ -53,8 +53,8 @@ Than you can add the dependency to your dependencies:
 You can first define the version in the ext section and add than the following gradle dependency to
 your project `build.gradle` if you want to import the core functionality of throw-able:
 
-```
 define version in file gradle.properties
+```
 
 throwAbleVersion=1.5
 ```
