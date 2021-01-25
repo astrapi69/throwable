@@ -25,7 +25,8 @@
 package io.github.astrapi69.throwable;
 
 /**
- * The class {@link ExceptionExtensions} provides methods for convert exceptions to readable string objects.
+ * The class {@link ExceptionExtensions} provides methods for convert exceptions to readable string
+ * objects.
  *
  * @author Asterios Raptis
  * @version 1.0
@@ -39,8 +40,10 @@ public final class ExceptionExtensions
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
 	 *
-	 * @param exception       the {@link Exception} object
-	 * @param additionalInfos the additional infos
+	 * @param exception
+	 *            the {@link Exception} object
+	 * @param additionalInfos
+	 *            the additional infos
 	 * @return the stacktrace as a {@link String} object
 	 */
 	public static String getStackTrace(final Exception exception, String... additionalInfos)
@@ -53,8 +56,10 @@ public final class ExceptionExtensions
 	 * Gets the stack trace elements from the given Throwable and returns a {@link String} object
 	 * from it.
 	 *
-	 * @param exception       the exception
-	 * @param additionalInfos the additional information to the given exception
+	 * @param exception
+	 *            the exception
+	 * @param additionalInfos
+	 *            the additional information to the given exception
 	 * @return the stack trace elements
 	 */
 	public static String getStackTraceElements(Exception exception, String... additionalInfos)

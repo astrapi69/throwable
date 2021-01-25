@@ -24,15 +24,15 @@
  */
 package io.github.astrapi69.throwable;
 
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
 
 /**
  * The unit test class for the class {@link ThrowableExtensions}
@@ -43,9 +43,12 @@ public class ThrowableExtensionsTest
 	/**
 	 * Test method for {@link ThrowableExtensions#getStackTrace(Throwable, String...)}
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
-	@SuppressWarnings("null") @Test public void testGetStackTrace() throws IOException
+	@SuppressWarnings("null")
+	@Test
+	public void testGetStackTrace() throws IOException
 	{
 		String expected;
 		String actual;
@@ -84,7 +87,9 @@ public class ThrowableExtensionsTest
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	@SuppressWarnings("null") @Test public void testGetStackTraceElements() throws IOException
+	@SuppressWarnings("null")
+	@Test
+	public void testGetStackTraceElements() throws IOException
 	{
 		String expected;
 		String actual;
@@ -128,7 +133,9 @@ public class ThrowableExtensionsTest
 	/**
 	 * Test method for {@link ThrowableExtensions#newThrowableMessage(Throwable, String)}.
 	 */
-	@SuppressWarnings("null") @Test public void testNewThrowableMessage()
+	@SuppressWarnings("null")
+	@Test
+	public void testNewThrowableMessage()
 	{
 
 		String expected;
@@ -163,7 +170,8 @@ public class ThrowableExtensionsTest
 	/**
 	 * Test method for {@link ThrowableExtensions}
 	 */
-	@Test public void testWithBeanTester()
+	@Test
+	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(ThrowableExtensions.class);

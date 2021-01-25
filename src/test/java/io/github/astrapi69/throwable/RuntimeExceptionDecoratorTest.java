@@ -24,13 +24,7 @@
  */
 package io.github.astrapi69.throwable;
 
-import de.alpharogroup.file.delete.DeleteFileExtensions;
-import de.alpharogroup.file.search.PathFinder;
-import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
-import io.github.astrapi69.throwable.api.ThrowableConsumer;
-import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertNotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -40,7 +34,14 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.testng.Assert.assertNotNull;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
+
+import de.alpharogroup.file.delete.DeleteFileExtensions;
+import de.alpharogroup.file.search.PathFinder;
+import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
+import io.github.astrapi69.throwable.api.ThrowableConsumer;
+import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
 
 /**
  * The unit test class for the class {@link RuntimeExceptionDecorator}
@@ -49,35 +50,15 @@ public class RuntimeExceptionDecoratorTest
 {
 
 	/**
-	 * Test method for {@link RuntimeExceptionDecorator#decorate(RuntimeExceptionDecoratable)}
-	 */
-	@Test(expectedExceptions = RuntimeException.class) public void testDecorate()
-	{
-		Object nullObject;
-
-		nullObject = null;
-
-		RuntimeExceptionDecorator.decorate(() -> nullObject.getClass());
-	}
-
-	/**
-	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableNoArgumentConsumer)}
-	 */
-	@Test(expectedExceptions = RuntimeException.class) public void testDecorateWithVoid()
-	{
-		File file = null;
-		new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
-		ThrowableNoArgumentConsumer<IOException> decorate = RuntimeExceptionDecorator
-			.decorate(() -> DeleteFileExtensions.delete(file));
-	}
-
-	/**
 	 * Copies(serialize) the given object to a byte array
 	 *
-	 * @param <T>    the generic type of the given object
-	 * @param object The Object to convert into a byte array
+	 * @param <T>
+	 *            the generic type of the given object
+	 * @param object
+	 *            The Object to convert into a byte array
 	 * @return The byte array from the Object
-	 * @throws IOException Signals that an I/O exception has occurred
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
 	 */
 	public static <T extends Serializable> byte[] toByteArray(final T object) throws IOException
 	{
@@ -90,9 +71,35 @@ public class RuntimeExceptionDecoratorTest
 	}
 
 	/**
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(RuntimeExceptionDecoratable)}
+	 */
+	@Test(expectedExceptions = RuntimeException.class)
+	public void testDecorate()
+	{
+		Object nullObject;
+
+		nullObject = null;
+
+		RuntimeExceptionDecorator.decorate(() -> nullObject.getClass());
+	}
+
+	/**
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableNoArgumentConsumer)}
+	 */
+	@Test(expectedExceptions = RuntimeException.class)
+	public void testDecorateWithVoid()
+	{
+		File file = null;
+		new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
+		ThrowableNoArgumentConsumer<IOException> decorate = RuntimeExceptionDecorator
+			.decorate(() -> DeleteFileExtensions.delete(file));
+	}
+
+	/**
 	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableConsumer)}
 	 */
-	@Test public void testToRuntimeExceptionIfNeeded()
+	@Test
+	public void testToRuntimeExceptionIfNeeded()
 	{
 		String value;
 
@@ -108,8 +115,8 @@ public class RuntimeExceptionDecoratorTest
 	/**
 	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableConsumer)}
 	 */
-	@Test(expectedExceptions = {
-		RuntimeException.class }) public void testDecorateWithoutReturnValue()
+	@Test(expectedExceptions = { RuntimeException.class })
+	public void testDecorateWithoutReturnValue()
 	{
 		List<String> integers = Arrays.asList("44", "xyz", "145");
 		integers.forEach(RuntimeExceptionDecorator.decorate(str -> {
@@ -120,7 +127,8 @@ public class RuntimeExceptionDecoratorTest
 	/**
 	 * Test method for {@link RuntimeExceptionDecorator}
 	 */
-	@Test public void testWithBeanTester()
+	@Test
+	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(RuntimeExceptionDecorator.class);

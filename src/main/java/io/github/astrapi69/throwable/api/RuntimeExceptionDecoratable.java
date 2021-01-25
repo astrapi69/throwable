@@ -27,9 +27,11 @@ package io.github.astrapi69.throwable.api;
 /**
  * The interface {@link RuntimeExceptionDecoratable} can handle checked exceptions
  *
- * @param <T> the generic type of the return type
+ * @param <T>
+ *            the generic type of the return type
  */
-@FunctionalInterface public interface RuntimeExceptionDecoratable<T>
+@FunctionalInterface
+public interface RuntimeExceptionDecoratable<T>
 {
 
 	/**

@@ -31,10 +31,11 @@ CHANGED:
 Version 1.4
 -------------
 
-ADDED: 
+ADDED:
 
 - new class RuntimeExceptionDecorator that can decorate checked Exception with RuntimeException
-- new class ExceptionExtensions that provides methods for convert exceptions to readable string objects with out throwing IOExceptions
+- new class ExceptionExtensions that provides methods for convert exceptions to readable string
+  objects with out throwing IOExceptions
 
 CHANGED:
 
@@ -59,7 +60,7 @@ CHANGED:
 Version 1.2
 -------------
 
-ADDED: 
+ADDED:
 
 - new consumer functional interface that provide a method that can handle checked exceptions
 - new method that creates a consumer that can handle checked exceptions
@@ -72,7 +73,7 @@ CHANGED:
 Version 1.1
 -------------
 
-ADDED: 
+ADDED:
 
 - new factory method for create a custom message from a given Throwable with additional infos
 
@@ -83,10 +84,11 @@ CHANGED:
 Version 1
 -------------
 
-ADDED: 
+ADDED:
 
-- added new utility class for get the result of a stacktrace as string 
+- added new utility class for get the result of a stacktrace as string
 - new CHANGELOG.md file created
 
 Notable links:
-[keep a changelog](http://keepachangelog.com/en/1.0.0/) Don’t let your friends dump git logs into changelogs
+[keep a changelog](http://keepachangelog.com/en/1.0.0/) Don’t let your friends dump git logs into
+changelogs

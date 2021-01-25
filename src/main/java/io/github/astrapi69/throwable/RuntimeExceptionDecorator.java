@@ -24,11 +24,11 @@
  */
 package io.github.astrapi69.throwable;
 
+import java.util.function.Consumer;
+
 import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
 import io.github.astrapi69.throwable.api.ThrowableConsumer;
 import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
-
-import java.util.function.Consumer;
 
 /**
  * The class {@link RuntimeExceptionDecorator}
@@ -42,9 +42,10 @@ public class RuntimeExceptionDecorator
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
 	 *
-	 * @param decoratable       the function object to decorate
-	 * @return the generic type of the return type of the decorated function or throws
-	 * a {@link RuntimeException} that decorates the thrown exception of the origin function
+	 * @param decoratable
+	 *            the function object to decorate
+	 * @return the generic type of the return type of the decorated function or throws a
+	 *         {@link RuntimeException} that decorates the thrown exception of the origin function
 	 */
 	public static <T> T decorate(RuntimeExceptionDecoratable<T> decoratable)
 	{
@@ -63,9 +64,12 @@ public class RuntimeExceptionDecorator
 	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
 	 * see unit tests
 	 *
-	 * @param <T>               the generic type
-	 * @param <E>               the type of the exception
-	 * @param throwableConsumer the throwable consumer
+	 * @param <T>
+	 *            the generic type
+	 * @param <E>
+	 *            the type of the exception
+	 * @param throwableConsumer
+	 *            the throwable consumer
 	 * @return the consumer
 	 */
 	public static <T, E extends Throwable> Consumer<T> decorate(
@@ -88,8 +92,10 @@ public class RuntimeExceptionDecorator
 	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
 	 * see unit tests
 	 *
-	 * @param <T>                the generic type
-	 * @param noArgumentConsumer the throwable consumer with no argument
+	 * @param <T>
+	 *            the generic type
+	 * @param noArgumentConsumer
+	 *            the throwable consumer with no argument
 	 * @return the consumer
 	 */
 	public static <T extends Throwable> ThrowableNoArgumentConsumer<T> decorate(

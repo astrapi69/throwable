@@ -27,9 +27,11 @@ package io.github.astrapi69.throwable.api;
 /**
  * The interface {@link ThrowableNoArgumentConsumer} can handle checked exceptions
  *
- * @param <E> the type of the exception
+ * @param <E>
+ *            the type of the exception
  */
-@FunctionalInterface public interface ThrowableNoArgumentConsumer<E extends Throwable>
+@FunctionalInterface
+public interface ThrowableNoArgumentConsumer<E extends Throwable>
 {
 
 	/**

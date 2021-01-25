@@ -24,10 +24,10 @@
  */
 package io.github.astrapi69.throwable;
 
+import static org.testng.AssertJUnit.assertTrue;
+
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
-
-import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * The unit test class for the class {@link ExceptionExtensions}
@@ -38,7 +38,8 @@ public class ExceptionExtensionsTest
 	/**
 	 * Test method for {@link ExceptionExtensions#getStackTrace(Exception, String...)}
 	 */
-	@Test public void testGetStackTrace()
+	@Test
+	public void testGetStackTrace()
 	{
 		String expected;
 		String actual;
@@ -73,7 +74,8 @@ public class ExceptionExtensionsTest
 	/**
 	 * Test method for {@link ExceptionExtensions#getStackTraceElements(Exception, String...)}
 	 */
-	@Test public void testGetStackTraceElements()
+	@Test
+	public void testGetStackTraceElements()
 	{
 		String expected;
 		String actual;
@@ -108,7 +110,8 @@ public class ExceptionExtensionsTest
 	/**
 	 * Test method for {@link ExceptionExtensions}
 	 */
-	@Test public void testWithBeanTester()
+	@Test
+	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(ExceptionExtensions.class);
