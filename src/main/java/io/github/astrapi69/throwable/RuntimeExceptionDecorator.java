@@ -26,6 +26,7 @@ package io.github.astrapi69.throwable;
 
 import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
 import io.github.astrapi69.throwable.api.ThrowableConsumer;
+import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
 
 import java.util.function.Consumer;
 
@@ -63,10 +64,12 @@ public class RuntimeExceptionDecorator
 	 * see unit tests
 	 *
 	 * @param <T>               the generic type
+	 * @param <E>               the type of the exception
 	 * @param throwableConsumer the throwable consumer
 	 * @return the consumer
 	 */
-	public static <T> Consumer<T> decorate(ThrowableConsumer<T, Throwable> throwableConsumer)
+	public static <T, E extends Throwable> Consumer<T> decorate(
+		ThrowableConsumer<T, E> throwableConsumer)
 	{
 		return object -> {
 			try
@@ -78,6 +81,33 @@ public class RuntimeExceptionDecorator
 				throw new RuntimeException(throwable);
 			}
 		};
+	}
+
+	/**
+	 * Consume and if an checked exception occurs it is decorated in to a
+	 * <code>RuntimeException</code> and will be thrown. Useful in lambda expressions, for examples
+	 * see unit tests
+	 *
+	 * @param <T>                the generic type
+	 * @param noArgumentConsumer the throwable consumer with no argument
+	 * @return the consumer
+	 */
+	public static <T extends Throwable> ThrowableNoArgumentConsumer<T> decorate(
+		ThrowableNoArgumentConsumer<T> noArgumentConsumer)
+	{
+		ThrowableNoArgumentConsumer<T> throwableNoArgumentConsumer;
+		try
+		{
+			throwableNoArgumentConsumer = () -> {
+				noArgumentConsumer.accept();
+			};
+			throwableNoArgumentConsumer.accept();
+		}
+		catch (Throwable throwable)
+		{
+			throw new RuntimeException(throwable);
+		}
+		return throwableNoArgumentConsumer;
 	}
 
 }

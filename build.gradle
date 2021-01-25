@@ -30,11 +30,6 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
-    testImplementation("org.testng:testng:$testngVersion")
-}
-
 tasks.withType(GenerateModuleMetadata) {
     enabled = false
 }
@@ -187,3 +182,9 @@ license {
 // workhack for license issue #76
 gradle.startParameter.excludedTaskNames += "licenseMain"
 gradle.startParameter.excludedTaskNames += "licenseTest"
+
+dependencies {
+    testImplementation("de.alpharogroup:file-worker:$fileWorkerVersion")
+    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
+    testImplementation("org.testng:testng:$testngVersion")
+}

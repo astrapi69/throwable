@@ -24,12 +24,16 @@
  */
 package io.github.astrapi69.throwable;
 
+import de.alpharogroup.file.delete.DeleteFileExtensions;
+import de.alpharogroup.file.search.PathFinder;
 import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
 import io.github.astrapi69.throwable.api.ThrowableConsumer;
+import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -54,6 +58,17 @@ public class RuntimeExceptionDecoratorTest
 		nullObject = null;
 
 		RuntimeExceptionDecorator.decorate(() -> nullObject.getClass());
+	}
+
+	/**
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableNoArgumentConsumer)}
+	 */
+	@Test(expectedExceptions = RuntimeException.class) public void testDecorateWithVoid()
+	{
+		File file = null;
+		new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
+		ThrowableNoArgumentConsumer<IOException> decorate = RuntimeExceptionDecorator
+			.decorate(() -> DeleteFileExtensions.delete(file));
 	}
 
 	/**

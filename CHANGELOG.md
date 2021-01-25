@@ -4,6 +4,13 @@
 Version 1.6-SNAPSHOT
 -------------
 
+ADDED:
+
+- new consumer functional interface ThrowableNoArgumentConsumer that provide a method that can
+  handle checked exceptions with no argument
+- new method in RuntimeExceptionDecorator that can handle methods with void return
+- new test dependency file-worker in version 5.7
+
 CHANGED:
 
 - update of gradle to new version 6.8
