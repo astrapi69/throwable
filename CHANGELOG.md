@@ -13,7 +13,8 @@ ADDED:
 
 CHANGED:
 
-- update of gradle to new version 6.8
+- update of gradle to new version 6.8.1
+- update of com.github.ben-manes.versions.gradle.plugin to new version 0.36.0
 
 Version 1.5
 -------------
