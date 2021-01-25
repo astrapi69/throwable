@@ -35,7 +35,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- THROW-ABLE version -->
-		<throw-able.version>1.5</throw-able.version>
+		<throw-able.version>1.6</throw-able.version>
 			...
 	</properties>
 			...
@@ -59,7 +59,7 @@ define version in file gradle.properties
 
 ```
 
-throwAbleVersion=1.5
+throwAbleVersion=1.6
 ```
 
 or in build.gradle ext area
@@ -67,7 +67,7 @@ or in build.gradle ext area
 ```
 ext {
 			...
-    throwAbleVersion = "1.5"
+    throwAbleVersion = "1.6"
 			...
 }
 ```
