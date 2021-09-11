@@ -32,7 +32,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * The class {@link ThrowableExtensions}
+ * The class {@link ThrowableExtensions} provides methods for convert a {@link Throwable} object to
+ * readable {@link String} objects
  *
  * @author Asterios Raptis
  * @version 1.0

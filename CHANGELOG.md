@@ -4,6 +4,15 @@
 Version 1.7-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of gradle to new version 7.2
+- update of test dependency file-worker to new version 5.9
+- changed all dependencies from groupid de.alpharogroup to new groupid io.github.astrapi69
+- update dependency of com.github.ben-manes.versions.gradle.plugin to new version 0.39.0
+- update gradle-plugin dependency of gradle.plugin.com.hierynomus.gradle.plugins:
+  license-gradle-plugin to new version 0.16.1
+
 Version 1.6
 -------------
 
