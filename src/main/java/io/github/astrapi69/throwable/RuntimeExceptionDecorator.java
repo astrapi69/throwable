@@ -42,6 +42,8 @@ public class RuntimeExceptionDecorator
 	/**
 	 * Gets the stacktrace as a {@link String} object. <br>
 	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param decoratable
 	 *            the function object to decorate
 	 * @return the generic type of the return type of the decorated function or throws a
