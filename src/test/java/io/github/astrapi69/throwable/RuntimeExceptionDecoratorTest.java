@@ -37,8 +37,8 @@ import java.util.List;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.file.delete.DeleteFileExtensions;
-import de.alpharogroup.file.search.PathFinder;
+import io.github.astrapi69.file.delete.DeleteFileExtensions;
+import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
 import io.github.astrapi69.throwable.api.ThrowableConsumer;
 import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;

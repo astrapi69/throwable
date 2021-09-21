@@ -4,6 +4,9 @@
 Version 1.8-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of test dependency file-worker in version 5.10
 
 Version 1.7
 -------------
