@@ -1,9 +1,12 @@
 ## Change log
 ----------------------
 
-Version 1.9-SNAPSHOT
+Version 2-SNAPSHOT
 -------------
 
+CHANGED:
+
+- upgrade of jdk to version 11
 
 Version 1.8
 -------------
