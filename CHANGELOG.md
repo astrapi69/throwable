@@ -1,12 +1,13 @@
 ## Change log
 ----------------------
 
-Version 2
+Version 2.1
 -------------
 
 CHANGED:
 
 - upgrade of jdk to version 11
+- rename of module from throw-able to throwable
 
 Version 1.8
 -------------
