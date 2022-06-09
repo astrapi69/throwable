@@ -41,23 +41,23 @@ functionality of throw-able:
 
 Than you can add the dependency to your dependencies:
 
-	<properties>
-			...
-		<!-- THROW-ABLE version -->
-		<throw-able.version>1.7</throw-able.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
+    <properties>
+            ...
+        <!-- THROW-ABLE version -->
+        <throw-able.version>1.7</throw-able.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
             <!-- THROW-ABLE DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>throw-able</artifactId>
-				<version>${throw-able.version}</version>
-			</dependency>
-			...
-		</dependencies>
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>throw-able</artifactId>
+                <version>${throw-able.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 ## gradle dependency
 
@@ -75,9 +75,9 @@ or in build.gradle ext area
 
 ```
 ext {
-			...
+            ...
     throwAbleVersion = "1.7"
-			...
+            ...
 }
 ```
 
@@ -85,9 +85,9 @@ and then add the dependency to the dependencies area
 
 ```
 dependencies {
-			...
+            ...
     implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
-			...
+            ...
 }
 ```
 
@@ -98,24 +98,24 @@ You can decorate a method that throws a checked exceptions with the class Runtim
 ```
 public final class FileFactory
 {
-	public static FileCreationState newFile(final File file) throws IOException
-	{
-		FileCreationState fileCreationState = FileCreationState.ALREADY_EXISTS;
-		if (!file.exists())
-		{
-			fileCreationState = FileCreationState.FAILED;
-			newParentDirectories(file);
-			if (file.createNewFile())
-			{
-				fileCreationState = FileCreationState.CREATED;
-			}
-		}
-		return fileCreationState;
-	}
+    public static FileCreationState newFile(final File file) throws IOException
+    {
+        FileCreationState fileCreationState = FileCreationState.ALREADY_EXISTS;
+        if (!file.exists())
+        {
+            fileCreationState = FileCreationState.FAILED;
+            newParentDirectories(file);
+            if (file.createNewFile())
+            {
+                fileCreationState = FileCreationState.CREATED;
+            }
+        }
+        return fileCreationState;
+    }
 
     public static FileCreationState createFile(final File file)
     {
-		return RuntimeExceptionDecorator.decorate(()-> newFile(file));
+        return RuntimeExceptionDecorator.decorate(()-> newFile(file));
     }
 }
 ```
@@ -128,19 +128,19 @@ signature. Note: the method FileFactory#createFile returns a FileCreationState o
 ```
 public final class CopyFileExtensions
 {
-	public static void copyFiles(final List<File> sources, final File destination,
-		final Charset sourceEncoding, final Charset destinationEncoding, final boolean lastModified)
-	{
-		if (!destination.exists())
-		{
-			FileFactory.newDirectory(destination);
-		}
-		sources.stream().forEach(RuntimeExceptionDecorator.decorate(file -> {
-			File destinationFile = new File(destination, file.getName());
-			CopyFileExtensions.copyFile(file, destinationFile, sourceEncoding, destinationEncoding,
-				lastModified);
-		}));
-	}
+    public static void copyFiles(final List<File> sources, final File destination,
+        final Charset sourceEncoding, final Charset destinationEncoding, final boolean lastModified)
+    {
+        if (!destination.exists())
+        {
+            FileFactory.newDirectory(destination);
+        }
+        sources.stream().forEach(RuntimeExceptionDecorator.decorate(file -> {
+            File destinationFile = new File(destination, file.getName());
+            CopyFileExtensions.copyFile(file, destinationFile, sourceEncoding, destinationEncoding,
+                lastModified);
+        }));
+    }
     ...
 }
 ```
@@ -272,4 +272,3 @@ Open Source:
 |[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throw-able)|
 |Special thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects|
 |     <img width=1000/>     |
-

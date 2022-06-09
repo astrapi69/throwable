@@ -114,8 +114,8 @@ public final class ThrowableExtensions
 		StringBuilder stacktrace = new StringBuilder();
 		if (0 < additionalInfos.length)
 		{
-			stacktrace.append(Arrays.stream(additionalInfos).filter(Objects::nonNull).map(Object::toString)
-				.collect(Collectors.joining(delimiter)));
+			stacktrace.append(Arrays.stream(additionalInfos).filter(Objects::nonNull)
+				.map(Object::toString).collect(Collectors.joining(delimiter)));
 			stacktrace.append(" ");
 		}
 		return stacktrace;

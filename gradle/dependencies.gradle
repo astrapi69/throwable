@@ -1,0 +1,6 @@
+
+dependencies {
+    testImplementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
+    testImplementation("org.meanbean:meanbean:$meanbeanVersion")
+    testImplementation("org.testng:testng:$testngVersion")
+}

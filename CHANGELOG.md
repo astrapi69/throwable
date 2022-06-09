@@ -4,9 +4,19 @@
 Version 1.8-SNAPSHOT
 -------------
 
+ADDED:
+
+- new gradle-plugin dependency of 'org.ajoberstar.grgit:grgit-gradle' in version 4.4.1 for create git release tags
+- new gradle-plugin dependency of 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.70
+- Improve GRADLE build Performance
+
 CHANGED:
 
-- update of test dependency file-worker in version 5.10
+- update of gradle to new version 7.4.2
+- update dependency of com.github.ben-manes.versions.gradle.plugin to new version 0.42.0
+- update of test dependency file-worker in version 8.2
+- update of test dependency testng to new version 7.5
+- extracted sections from build.gradle to own gradle files
 
 Version 1.7
 -------------
