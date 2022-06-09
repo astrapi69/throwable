@@ -8,6 +8,8 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throw-able)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
+[![Hits Of Code](https://hitsofcode.com/github/astrapi69/throw-able?branch=develop)](https://hitsofcode.com/github/astrapi69/throw-able/view?branch=develop)
+[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/throw-able)](https://github.com/astrapi69/throw-able)
 
 </div>
 
@@ -44,7 +46,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- THROW-ABLE version -->
-        <throw-able.version>1.7</throw-able.version>
+        <throw-able.version>1.8</throw-able.version>
             ...
     </properties>
             ...
@@ -67,28 +69,19 @@ your project `build.gradle` if you want to import the core functionality of thro
 define version in file gradle.properties
 
 ```
-
-throwAbleVersion=1.7
+throwAbleVersion=1.8
 ```
 
 or in build.gradle ext area
 
 ```
-ext {
-            ...
-    throwAbleVersion = "1.7"
-            ...
-}
+    throwAbleVersion = "1.8"
 ```
 
 and then add the dependency to the dependencies area
 
 ```
-dependencies {
-            ...
     implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
-            ...
-}
 ```
 
 # Usage
