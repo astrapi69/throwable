@@ -46,7 +46,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- THROW-ABLE version -->
-        <throw-able.version>1.8</throw-able.version>
+        <throw-able.version>2</throw-able.version>
             ...
     </properties>
             ...
@@ -69,13 +69,13 @@ your project `build.gradle` if you want to import the core functionality of thro
 define version in file gradle.properties
 
 ```
-throwAbleVersion=1.8
+throwAbleVersion=2
 ```
 
 or in build.gradle ext area
 
 ```
-    throwAbleVersion = "1.8"
+    throwAbleVersion = "2"
 ```
 
 and then add the dependency to the dependencies area
