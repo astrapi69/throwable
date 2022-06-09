@@ -2,14 +2,14 @@
 
 <div style="text-align: center">
 
-[![Build Status](https://api.travis-ci.com/astrapi69/throw-able.svg?branch=master)](https://travis-ci.com/github/astrapi69/throw-able)
-[![Coverage Status](https://codecov.io/gh/astrapi69/throw-able/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throw-able)
-[![Open Issues](https://img.shields.io/github/issues/astrapi69/throw-able.svg?style=flat)](https://github.com/astrapi69/throw-able/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throw-able)
-[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throw-able)
+[![Build Status](https://api.travis-ci.com/astrapi69/throwable.svg?branch=master)](https://travis-ci.com/github/astrapi69/throwable)
+[![Coverage Status](https://codecov.io/gh/astrapi69/throwable/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throwable)
+[![Open Issues](https://img.shields.io/github/issues/astrapi69/throwable.svg?style=flat)](https://github.com/astrapi69/throwable/issues)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throwable/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throwable)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throwable.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throwable)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
-[![Hits Of Code](https://hitsofcode.com/github/astrapi69/throw-able?branch=develop)](https://hitsofcode.com/github/astrapi69/throw-able/view?branch=develop)
-[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/throw-able)](https://github.com/astrapi69/throw-able)
+[![Hits Of Code](https://hitsofcode.com/github/astrapi69/throwable?branch=develop)](https://hitsofcode.com/github/astrapi69/throwable/view?branch=develop)
+[![Lines Of Code](https://tokei.rs/b1/github/astrapi69/throwable)](https://github.com/astrapi69/throwable)
 
 </div>
 
@@ -19,7 +19,7 @@ decorate checked exceptions and transform them to unchecked exceptions
 If you like this project put a ⭐ and donate
 
 > Please support this project by simply putting a Github <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/astrapi69/throw-able" data-icon="octicon-star" aria-label="Star astrapi69/throw-able on GitHub">Star ⭐</a>
+<a class="github-button" href="https://github.com/astrapi69/throwable" data-icon="octicon-star" aria-label="Star astrapi69/throwable on GitHub">Star ⭐</a>
 >
 > Share this library with friends on Twitter and everywhere else you can
 >
@@ -33,20 +33,20 @@ If you like this project put a ⭐ and donate
 
 ## License
 
-The source code comes under the liberal MIT License, making throw-able great for all types of
+The source code comes under the liberal MIT License, making throwable great for all types of
 applications.
 
 ## Maven dependency
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core
-functionality of throw-able:
+functionality of throwable:
 
 Than you can add the dependency to your dependencies:
 
     <properties>
             ...
         <!-- THROW-ABLE version -->
-        <throw-able.version>2</throw-able.version>
+        <throwable.version>2</throwable.version>
             ...
     </properties>
             ...
@@ -55,8 +55,8 @@ Than you can add the dependency to your dependencies:
             <!-- THROW-ABLE DEPENDENCY -->
             <dependency>
                 <groupId>io.github.astrapi69</groupId>
-                <artifactId>throw-able</artifactId>
-                <version>${throw-able.version}</version>
+                <artifactId>throwable</artifactId>
+                <version>${throwable.version}</version>
             </dependency>
             ...
         </dependencies>
@@ -64,7 +64,7 @@ Than you can add the dependency to your dependencies:
 ## gradle dependency
 
 You can first define the version in the ext section and add than the following gradle dependency to
-your project `build.gradle` if you want to import the core functionality of throw-able:
+your project `build.gradle` if you want to import the core functionality of throwable:
 
 define version in file gradle.properties
 
@@ -81,7 +81,7 @@ or in build.gradle ext area
 and then add the dependency to the dependencies area
 
 ```
-    implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
+    implementation("io.github.astrapi69:throwable:$throwAbleVersion")
 ```
 
 # Usage
@@ -144,22 +144,22 @@ FunctionalInterface.
 
 ## Want to Help and improve it? ###
 
-The source code for throw-able are on GitHub. Please feel free to fork and send pull requests!
+The source code for throwable are on GitHub. Please feel free to fork and send pull requests!
 
-Create your own fork of [astrapi69/throw-able/fork](https://github.com/astrapi69/throw-able/fork)
+Create your own fork of [astrapi69/throwable/fork](https://github.com/astrapi69/throwable/fork)
 
 To share your
-changes, [submit a pull request](https://github.com/astrapi69/throw-able/pull/new/develop).
+changes, [submit a pull request](https://github.com/astrapi69/throwable/pull/new/develop).
 
 Don't forget to add new units tests on your changes.
 
 ## Contacting the Developers
 
-Do not hesitate to contact the throw-able developers with your questions, concerns, comments, bug
+Do not hesitate to contact the throwable developers with your questions, concerns, comments, bug
 reports, or feature requests.
 
 - Feature requests, questions and bug reports can be reported at
-  the [issues page](https://github.com/astrapi69/throw-able/issues).
+  the [issues page](https://github.com/astrapi69/throwable/issues).
 
 ## Note
 
@@ -225,7 +225,7 @@ alt="Donation Monero Wallet" width="250"/>
 
 or over flattr:
 
-<a href="https://flattr.com/submit/auto?fid=r7vp62&url=https%3A%2F%2Fgithub.com%2Fastrapi69%2Fthrow-able" target="_blank">
+<a href="https://flattr.com/submit/auto?fid=r7vp62&url=https%3A%2F%2Fgithub.com%2Fastrapi69%2Fthrowable" target="_blank">
 <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" style="border: none" />
 </a>
 
@@ -242,26 +242,20 @@ Open Source:
 
 ## Credits
 
-|**Travis CI**|
-|     :---:      |
-|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://travis-ci.com)|
-|Special thanks to [Travis CI](https://travis-ci.com) for providing a free continuous integration service for open source projects|
-|     <img width=1000/>     |
-
 |**Nexus Sonatype repositories**|
 |     :---:      |
-|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/swing-components.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~throw-able~~~)|
+|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/swing-components.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~throwable~~~)|
 |Special thanks to [sonatype repository](https://www.sonatype.com) for providing a free maven repository service for open source projects|
 |     <img width=1000/>     |
 
 |**codecov.io**|
 |     :---:      |
-|[![Coverage Status](https://codecov.io/gh/astrapi69/throw-able/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throw-able)|
+|[![Coverage Status](https://codecov.io/gh/astrapi69/throwable/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/throwable)|
 |Special thanks to [codecov.io](https://codecov.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 
 |**javadoc.io**|
 |     :---:      |
-|[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throw-able.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throw-able)|
+|[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/throwable.svg)](http://www.javadoc.io/doc/io.github.astrapi69/throwable)|
 |Special thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects|
 |     <img width=1000/>     |
