@@ -4,6 +4,11 @@
 Version 2.2-SNAPSHOT
 -------------
 
+ADDED:
+
+- new export declaration in module-info.java for package io.github.astrapi69.throwable
+- new export declaration to module-info.java for package io.github.astrapi69.throwable.api
+
 Version 2.1
 -------------
 

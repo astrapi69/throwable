@@ -23,4 +23,6 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 module throwable {
+	exports io.github.astrapi69.throwable;
+	exports io.github.astrapi69.throwable.api;
 }
