@@ -6,8 +6,11 @@ Version 2.3-SNAPSHOT
 
 CHANGED:
 
+- update of gradle to new version 7.5-rc-2
+- new gradle-plugin dependency of 'org.ajoberstar.grgit:grgit-gradle' in version 5.0.0 for create git release tags
+- new gradle-plugin dependency of 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.7.2
 - replaced test dependency testng with junit-jupiter-api
-- increase code coverage
+- increase code coverage back to 100%
 
 Version 2.2
 -------------
@@ -31,7 +34,7 @@ Version 1.8
 ADDED:
 
 - new gradle-plugin dependency of 'org.ajoberstar.grgit:grgit-gradle' in version 4.4.1 for create git release tags
-- new gradle-plugin dependency of 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.70
+- new gradle-plugin dependency of 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.7.0
 - Improve GRADLE build Performance
 
 CHANGED:
