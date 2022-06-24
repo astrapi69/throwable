@@ -24,10 +24,11 @@
  */
 package io.github.astrapi69.throwable;
 
-import static org.testng.AssertJUnit.assertTrue;
 
+import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * The unit test class for the class {@link ExceptionExtensions}

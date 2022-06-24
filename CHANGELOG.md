@@ -4,7 +4,9 @@
 Version 2.3-SNAPSHOT
 -------------
 
+CHANGED:
 
+- replaced test dependency testng with junit-jupiter-api
 
 Version 2.2
 -------------

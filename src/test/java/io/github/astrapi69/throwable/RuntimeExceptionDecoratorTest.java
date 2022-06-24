@@ -24,7 +24,6 @@
  */
 package io.github.astrapi69.throwable;
 
-import static org.testng.Assert.assertNotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -34,14 +33,18 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
 
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
 import io.github.astrapi69.throwable.api.ThrowableConsumer;
 import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * The unit test class for the class {@link RuntimeExceptionDecorator}
@@ -73,26 +76,38 @@ public class RuntimeExceptionDecoratorTest
 	/**
 	 * Test method for {@link RuntimeExceptionDecorator#decorate(RuntimeExceptionDecoratable)}
 	 */
-	@Test(expectedExceptions = RuntimeException.class)
-	public void testDecorate()
+	@Test
+	public void testDecorateWithNullValue()
 	{
 		Object nullObject;
+		String actual;
+		String expected;
 
 		nullObject = null;
-
-		RuntimeExceptionDecorator.decorate(() -> nullObject.getClass());
+		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+			() -> RuntimeExceptionDecorator.decorate(() -> nullObject.getClass()));
+		expected = "java.lang.NullPointerException";
+		actual = runtimeException.getMessage();
+		assertEquals(expected, actual);
 	}
 
 	/**
 	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableNoArgumentConsumer)}
 	 */
-	@Test(expectedExceptions = RuntimeException.class)
+	@Test
 	public void testDecorateWithVoid()
 	{
 		File file = null;
 		new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
-		ThrowableNoArgumentConsumer<IOException> decorate = RuntimeExceptionDecorator
-			.decorate(() -> DeleteFileExtensions.delete(file));
+
+		String actual;
+		String expected;
+
+		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+			() -> RuntimeExceptionDecorator.decorate(() -> DeleteFileExtensions.delete(file)));
+		expected = "java.lang.NullPointerException";
+		actual = runtimeException.getMessage();
+		assertEquals(expected, actual);
 	}
 
 	/**
@@ -115,13 +130,15 @@ public class RuntimeExceptionDecoratorTest
 	/**
 	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableConsumer)}
 	 */
-	@Test(expectedExceptions = { RuntimeException.class })
+	@Test
 	public void testDecorateWithoutReturnValue()
 	{
 		List<String> integers = Arrays.asList("44", "xyz", "145");
-		integers.forEach(RuntimeExceptionDecorator.decorate(str -> {
-			System.out.println(Integer.parseInt(str));
-		}));
+
+		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+			() -> integers.forEach(RuntimeExceptionDecorator.decorate(str -> {
+				System.out.println(Integer.parseInt(str));
+			})));
 	}
 
 	/**
