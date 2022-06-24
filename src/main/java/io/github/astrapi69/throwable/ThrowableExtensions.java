@@ -24,7 +24,6 @@
  */
 package io.github.astrapi69.throwable;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
@@ -53,18 +52,16 @@ public final class ThrowableExtensions
 	 * @param additionalInfos
 	 *            the additional infos
 	 * @return the stacktrace as a {@link String} object
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred
 	 */
 	public static String getStackTrace(final Throwable throwable, String... additionalInfos)
-		throws IOException
 	{
 		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
-		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
+		StringWriter stringWriter = new StringWriter();
+		try (PrintWriter pw = new PrintWriter(stringWriter))
 		{
 			throwable.printStackTrace(pw);
-			stacktrace.append(sw.toString());
+			stacktrace.append(stringWriter);
 		}
 		return stacktrace.toString();
 	}
@@ -78,15 +75,13 @@ public final class ThrowableExtensions
 	 * @param additionalInfos
 	 *            the additional information to the given throwable
 	 * @return the stack trace elements
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred
 	 */
 	public static String getStackTraceElements(Throwable throwable, String... additionalInfos)
-		throws IOException
 	{
 		Objects.requireNonNull(throwable);
 		StringBuilder stacktrace = getAdditionalInfos(additionalInfos);
-		try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw))
+		StringWriter stringWriter = new StringWriter();
+		try (PrintWriter pw = new PrintWriter(stringWriter))
 		{
 			pw.println(throwable.getClass().toString());
 			while (throwable != null)
@@ -99,7 +94,7 @@ public final class ThrowableExtensions
 				}
 				throwable = throwable.getCause();
 			}
-			stacktrace.append(sw.toString());
+			stacktrace.append(stringWriter.toString());
 		}
 		return stacktrace.toString();
 	}

@@ -25,15 +25,15 @@
 package io.github.astrapi69.throwable;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * The unit test class for the class {@link ThrowableExtensions}

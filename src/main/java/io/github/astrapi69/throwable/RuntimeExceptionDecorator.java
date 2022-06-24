@@ -106,9 +106,7 @@ public class RuntimeExceptionDecorator
 		ThrowableNoArgumentConsumer<T> throwableNoArgumentConsumer;
 		try
 		{
-			throwableNoArgumentConsumer = () -> {
-				noArgumentConsumer.accept();
-			};
+			throwableNoArgumentConsumer = () -> noArgumentConsumer.accept();
 			throwableNoArgumentConsumer.accept();
 		}
 		catch (Throwable throwable)

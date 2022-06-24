@@ -24,8 +24,6 @@
  */
 package io.github.astrapi69.throwable;
 
-import java.io.IOException;
-
 /**
  * The class {@link ExceptionExtensions} provides methods for convert exceptions to readable string
  * objects.
@@ -54,14 +52,7 @@ public final class ExceptionExtensions
 		{
 			return "";
 		}
-		try
-		{
-			return ThrowableExtensions.getStackTrace(exception, additionalInfos);
-		}
-		catch (IOException e)
-		{
-			return exception.toString();
-		}
+		return ThrowableExtensions.getStackTrace(exception, additionalInfos);
 	}
 
 	/**
@@ -80,14 +71,7 @@ public final class ExceptionExtensions
 		{
 			return "";
 		}
-		try
-		{
-			return ThrowableExtensions.getStackTraceElements(exception, additionalInfos);
-		}
-		catch (IOException e)
-		{
-			return exception.toString();
-		}
+		return ThrowableExtensions.getStackTraceElements(exception, additionalInfos);
 	}
 
 }

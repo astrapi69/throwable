@@ -25,6 +25,9 @@
 package io.github.astrapi69.throwable;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -42,9 +45,6 @@ import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.throwable.api.RuntimeExceptionDecoratable;
 import io.github.astrapi69.throwable.api.ThrowableConsumer;
 import io.github.astrapi69.throwable.api.ThrowableNoArgumentConsumer;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * The unit test class for the class {@link RuntimeExceptionDecorator}
@@ -108,6 +108,22 @@ public class RuntimeExceptionDecoratorTest
 		expected = "java.lang.NullPointerException";
 		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
+	}
+
+
+	/**
+	 * Test method for {@link RuntimeExceptionDecorator#decorate(ThrowableNoArgumentConsumer)}
+	 */
+	@Test
+	public void testDecorate()
+	{
+		ThrowableNoArgumentConsumer<IOException> actual;
+
+		File file = new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
+
+		actual = RuntimeExceptionDecorator.decorate(() -> DeleteFileExtensions.delete(file));
+
+		assertNotNull(actual);
 	}
 
 	/**

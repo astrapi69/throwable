@@ -7,6 +7,7 @@ Version 2.3-SNAPSHOT
 CHANGED:
 
 - replaced test dependency testng with junit-jupiter-api
+- increase code coverage
 
 Version 2.2
 -------------

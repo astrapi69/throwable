@@ -25,16 +25,48 @@
 package io.github.astrapi69.throwable;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * The unit test class for the class {@link ExceptionExtensions}
  */
 public class ExceptionExtensionsTest
 {
+	/**
+	 * Test method for {@link ExceptionExtensions#getStackTraceElements(Exception, String...)}
+	 */
+	@Test
+	public void testGetStackTraceElementsWithNullValue()
+	{
+		String expected;
+		String actual;
+		Exception exception;
+
+		exception = null;
+		actual = ExceptionExtensions.getStackTraceElements(exception);
+		expected = "";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ExceptionExtensions#getStackTrace(Exception, String...)}
+	 */
+	@Test
+	public void testGetStackTraceWithNullValue()
+	{
+		String expected;
+		String actual;
+		Exception exception;
+
+		exception = null;
+		actual = ExceptionExtensions.getStackTrace(exception);
+		expected = "";
+		assertEquals(expected, actual);
+	}
 
 	/**
 	 * Test method for {@link ExceptionExtensions#getStackTrace(Exception, String...)}
