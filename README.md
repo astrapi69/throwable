@@ -69,19 +69,19 @@ your project `build.gradle` if you want to import the core functionality of thro
 define version in file gradle.properties
 
 ```
-throwAbleVersion=2.3
+throwableVersion=2.3
 ```
 
 or in build.gradle ext area
 
 ```
-    throwAbleVersion = "2.3"
+    throwableVersion = "2.3"
 ```
 
 and then add the dependency to the dependencies area
 
 ```
-    implementation("io.github.astrapi69:throwable:$throwAbleVersion")
+    implementation("io.github.astrapi69:throwable:$throwableVersion")
 ```
 
 # Usage
