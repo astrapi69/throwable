@@ -1,7 +1,7 @@
 ## Change log
 ----------------------
 
-Version 2.4-SNAPSHOT
+Version 3-SNAPSHOT
 -------------
 
 ADDED:
@@ -10,7 +10,13 @@ ADDED:
 
 CHANGED:
 
-- update of gradle to new version 8.8
+- upgrade of jdk to version 17
+- update gradle to new version 8.8
+- update of gradle-plugin dependency with id 'com.github.ben-manes.versions' to new patch version 0.51.0
+- update of gradle-plugin dependency with id 'org.ajoberstar.grgit' to new patch version 5.2.2
+- update of gradle-plugin dependency with id 'io.freefair.lombok' to new patch version 8.6
+- update of gradle-plugin dependency with id 'com.diffplug.spotless' to new beta version 7.0.0.BETA1
+
 
 Version 2.3
 -------------

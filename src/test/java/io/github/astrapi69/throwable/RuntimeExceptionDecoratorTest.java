@@ -86,7 +86,7 @@ public class RuntimeExceptionDecoratorTest
 		nullObject = null;
 		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
 			() -> RuntimeExceptionDecorator.decorate(() -> nullObject.getClass()));
-		expected = "java.lang.NullPointerException";
+		expected = "java.lang.NullPointerException: Cannot invoke \"Object.getClass()\" because \"nullObject\" is null";
 		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
 	}

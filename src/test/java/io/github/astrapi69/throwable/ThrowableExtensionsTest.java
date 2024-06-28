@@ -153,8 +153,8 @@ public class ThrowableExtensionsTest
 		{
 			actual = ThrowableExtensions.newThrowableMessage(npe, "NPE");
 		}
-		expected = "NPE [NullPointerException]: empty message";
-		assertEquals(actual, expected);
+		expected = "NPE [NullPointerException]: Cannot invoke \"Object.getClass()\" because \"nullObject\" is null";
+		assertEquals(expected, actual);
 
 		try
 		{
@@ -164,8 +164,8 @@ public class ThrowableExtensionsTest
 		{
 			actual = ThrowableExtensions.newThrowableMessage(npe, "Fatal");
 		}
-		expected = "Fatal [NullPointerException]: empty message";
-		assertEquals(actual, expected);
+		expected = "Fatal [NullPointerException]: Cannot invoke \"Object.getClass()\" because \"nullObject\" is null";
+		assertEquals(expected, actual);
 	}
 
 	/**
