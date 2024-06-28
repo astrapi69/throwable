@@ -36,6 +36,48 @@ If you like this project put a ⭐ and donate
 The source code comes under the liberal MIT License, making throwable great for all types of
 applications.
 
+## gradle dependency
+
+Replace the variable ${latestVersion} with the current latest version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throwable/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/throwable)
+
+You can first define the version in the ext section and add than the following gradle dependency to
+your project `build.gradle` if you want to import the core functionality of throwable:
+
+define version in file gradle.properties
+
+```
+throwableVersion=${latestVersion}
+```
+
+or in build.gradle ext area
+
+```
+    throwableVersion = "${latestVersion}"
+```
+
+and then add the dependency to the dependencies area
+
+```
+    implementation("io.github.astrapi69:throwable:$throwableVersion")
+```
+
+# with new libs.versions.toml file
+
+If you use the new libs.versions.toml file for new automatic catalog versions update
+
+```
+[versions]
+throwable-version=${latestVersion}
+
+[libraries]
+throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable-version" }
+```
+then add the dependency to the dependencies area
+
+```
+    implementation libs.throwable
+```
+
 ## Maven dependency
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core
@@ -46,7 +88,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- THROW-ABLE version -->
-        <throwable.version>2.3</throwable.version>
+        <throwable.version>${latestVersion}</throwable.version>
             ...
     </properties>
             ...
@@ -60,29 +102,6 @@ Than you can add the dependency to your dependencies:
             </dependency>
             ...
         </dependencies>
-
-## gradle dependency
-
-You can first define the version in the ext section and add than the following gradle dependency to
-your project `build.gradle` if you want to import the core functionality of throwable:
-
-define version in file gradle.properties
-
-```
-throwableVersion=2.3
-```
-
-or in build.gradle ext area
-
-```
-    throwableVersion = "2.3"
-```
-
-and then add the dependency to the dependencies area
-
-```
-    implementation("io.github.astrapi69:throwable:$throwableVersion")
-```
 
 # Usage
 

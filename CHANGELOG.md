@@ -1,7 +1,7 @@
 ## Change log
 ----------------------
 
-Version 3-SNAPSHOT
+Version 3
 -------------
 
 ADDED:
@@ -10,6 +10,7 @@ ADDED:
 
 CHANGED:
 
+- rename of module name from throwable to io.github.astrapisixtynine.throwable
 - upgrade of jdk to version 17
 - update gradle to new version 8.8
 - update of gradle-plugin dependency with id 'com.github.ben-manes.versions' to new patch version 0.51.0
