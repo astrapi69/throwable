@@ -117,9 +117,9 @@ public class RuntimeExceptionDecoratorTest
 	@Test
 	public void testDecorate()
 	{
-		ThrowableNoArgumentConsumer<IOException> actual;
+		Boolean actual;
 
-		File file = new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
+		final File file = new File(PathFinder.getSrcTestResourcesDir(), "todelete.txt");
 
 		actual = RuntimeExceptionDecorator.decorate(() -> DeleteFileExtensions.delete(file));
 

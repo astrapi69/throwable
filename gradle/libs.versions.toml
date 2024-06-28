@@ -1,5 +1,5 @@
 [versions]
-file-worker-version = "8.2"
+file-worker-version = "17.2"
 gradle-plugin-grgit-version = "5.2.2"
 gradle-plugin-license-version = "0.16.1"
 gradle-plugin-spotless-version = "7.0.0.BETA1"
